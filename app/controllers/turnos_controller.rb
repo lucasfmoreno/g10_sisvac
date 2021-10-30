@@ -1,0 +1,2 @@
+class TurnosController < ApplicationControlle
+end
