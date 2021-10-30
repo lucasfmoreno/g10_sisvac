@@ -16,12 +16,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   private
 
-  def index    
-    if current_user
-      @tipoUsuarioActual = current_user.rol
-    end
- end
-
   def sign_up_params
     params.require(:user).permit(:nombre,:email,:password,:dni,:edad,:apellido,:direccion,:rol)
   end
