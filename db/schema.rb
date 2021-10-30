@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_30_203705) do
+ActiveRecord::Schema.define(version: 2021_10_30_211447) do
 
   create_table "turnos", force: :cascade do |t|
     t.integer "usuario_id"
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 2021_10_30_203705) do
     t.boolean "enfermedadCardio"
     t.string "enfermedadCardioDesc"
     t.string "Otros"
+    t.string "confirmation_token"
+    t.datetime "confirmation_sent_at"
+    t.datetime "confirmed_at"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts"
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
