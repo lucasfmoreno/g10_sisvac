@@ -17,6 +17,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    params.require(:user).permit(:nombre,:email,:password,:dni,:edad,:apellido,:direccion,:rol)
+    params.require(:user).permit(:nombre,:email,:password,:dni,:edad,:apellido,:direccion,:rol,:diabetico,:enfermedadCardio,:enfermadadCardioDesc,:Otros)
+  end
+  def configure_account_update_params
+     params.require(:user).permit(:direccion)
   end
 end

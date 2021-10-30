@@ -1,0 +1,2 @@
+#30/10/2021 11.13 Charif => Agregue 2 opciones boolean al registro de enfermedades, 1 campo de texto para completar con otra y en la base hay para que escriba cual enfermedad cardiopatica tiene, no la agregue todavia al formulario, quiero ver primero como usar js en ruby para que solamente se muestre cuando hace click.
+Agregue tambien para que pueda cambiar la direccion cuando se edite, voy a ver como puedo hacer para que muestre su nombre apellido y dni pero bloqueado solamente para que se muestre como se hace habitualmente en otras apps

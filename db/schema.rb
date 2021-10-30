@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_29_212908) do
+ActiveRecord::Schema.define(version: 2021_10_30_132917) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,6 +27,10 @@ ActiveRecord::Schema.define(version: 2021_10_29_212908) do
     t.integer "nroref"
     t.integer "edad"
     t.string "rol"
+    t.boolean "diabetico"
+    t.boolean "enfermedadCardio"
+    t.string "enfermedadCardioDesc"
+    t.string "Otros"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
