@@ -1,2 +1,5 @@
 <h1>Bienvenido al Vacunatorio de la Provincia de Buenos Aires</h1>
-<p></p>
+<% if user_signed_in? %>
+<h1>Hola <%= current_user.nombre %> (<%= current_user.rol %>)</h1>
+<% end %>
+
