@@ -11,7 +11,7 @@ class TurnosController < ApplicationController
     @turno=Turno.new(params[:turno].permit(:tipovacuna,:observacion))
     @turno.user_id = @usuario.id
     if @turno.save
-        redirect_to turnos_path, :notice => "Enviado!"
+        redirect_to root_path, :notice => "Enviado!"
     else
         flash[:error] = "Hubo un error"
         render "new"

@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_30_211447) do
+ActiveRecord::Schema.define(version: 2021_11_01_151309) do
 
   create_table "turnos", force: :cascade do |t|
     t.integer "user_id"
     t.string "tipovacuna"
     t.string "observacion"
     t.datetime "remember_created_at"
+    t.string "estado"
   end
 
   create_table "users", force: :cascade do |t|
