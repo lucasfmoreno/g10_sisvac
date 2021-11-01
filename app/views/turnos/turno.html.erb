@@ -1,1 +1,9 @@
-<h1> Mostra algo </h1>
+<h2> Solicitud de Turnos </h2>
+
+<%= form_for(@turno) do |f| %>
+<div class="field">
+    <%= f.label :tipovacuna %><br />
+    <%= f.text_field :tipovacuna, autofocus:true %>
+</div>
+
+<% end %>

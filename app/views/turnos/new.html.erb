@@ -1,0 +1,23 @@
+<h1>Pedido de Turno</h1>
+<p>Find me in app/views/turnos/new.html.erb</p>
+
+<h2> Solicitud de Turnos </h2>
+
+<%= form_for(@turno) do |f| %>
+<div class="field">
+    <%= f.label :"Tipo de vacuna" %><br />
+    <%= f.select :tipovacuna,['COVID','FIEBRE AMARILLA','GRIPE'] %>
+</div>
+<div class="field">
+    <%= f.label :"ID" %><br />
+    <%= f.number_field :usuario_id,autofocus:true %>
+</div>
+<div class="field">
+    <%= f.label :"Obeservacion" %><br />
+    <%= f.text_area :observacion %>
+</div>
+<br/>
+
+<p><%= f.submit "Enviar Pedido" %></p>
+
+<% end %>
