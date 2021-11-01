@@ -9,7 +9,7 @@ class TurnosController < ApplicationController
   def create
     @usuario = current_user
     @turno=Turno.new(params[:turno].permit(:tipovacuna,:observacion))
-    @turno.user_id = 1
+    @turno.user_id = @usuario.id
     if @turno.save
         redirect_to turnos_path, :notice => "Enviado!"
     else
