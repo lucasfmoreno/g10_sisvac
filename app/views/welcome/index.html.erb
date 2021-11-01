@@ -1,5 +1,32 @@
 <h1>Bienvenido al Vacunatorio de la Provincia de Buenos Aires</h1>
 <% if user_signed_in? %>
-<h1>Hola <%= current_user.nombre %> (<%= current_user.rol %>)</h1>
+    <h1>Hola <%= current_user.nombre %> (<%= current_user.rol %>)</h1>
+
+    <% @turnos = current_user.turnos %>
+    <h1> Tabla de turnos <% @turnos.count %><h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tipo de Vacuna</th>
+                <th>Observacion</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        <% @turnos.each do |turno| %>
+            <tr>
+                <td><%= turno.id %></td>
+                <td><%= turno.tipovacuna %></td>
+                <td><%= turno.observacion %></td>
+                <td><%= link_to "Ver detalle", turno_path(:id => turno.id) %></td>
+            </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h1><%= link_to "Solicitar turno", turnos_new_path() %></h1>
+
 <% end %>
 

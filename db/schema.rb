@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_10_30_211447) do
 
   create_table "turnos", force: :cascade do |t|
-    t.integer "usuario_id"
+    t.integer "user_id"
     t.string "tipovacuna"
     t.string "observacion"
     t.datetime "remember_created_at"

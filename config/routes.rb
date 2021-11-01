@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   get 'turnos/new'
   get 'turnos/create'
   get 'turnos/show'
-  root 'welcome#index'
   get 'turnos/turno'
+  root 'welcome#index'
   resources :vacunas
   resources :turnos
   devise_for :users, :controllers =>{registrations: 'users/registrations'}
