@@ -7,29 +7,29 @@
     <% if @turnos.count == 0 %>
         <p>Ud no tiene asignado ningun turno</p>
     <% else %>
-    <p> Tabla de turnos <% @turnos.count %><p>
+        <p> Tabla de turnos <% @turnos.count %><p>
 
-    <div id="tabla_turnos"  >
-    <table style="text-align:center;margin-right:auto;margin-left:auto">
+        <div id="tabla_turnos"  >
+        <table style="text-align:center;margin-right:auto;margin-left:auto">
 
-            <tr>
-                <th>Id</th>
-                <th>Tipo de Vacuna</th>
-                <th>Observacion</th>
-                <th>Estado</th>
-            </tr>
-        <% @turnos.each do |turno| %>
-            <tr>
-                <td><%= turno.id %></td>
-                <td><%= turno.tipovacuna %></td>
-                <td><%= turno.observacion %></td>
-                <td><%= turno.estado %></td>
-                <td><%= link_to "Ver detalle", turno_path(:id => turno.id) %></td>   
-            </tr>
-         <% end %>
-        
-     </table>
-    </div>
+                <tr>
+                    <th>Id</th>
+                    <th>Tipo de Vacuna</th>
+                    <th>Observacion</th>
+                    <th>Estado</th>
+                </tr>
+            <% @turnos.each do |turno| %>
+                <tr>
+                    <td><%= turno.id %></td>
+                    <td><%= turno.tipovacuna %></td>
+                    <td><%= turno.observacion %></td>
+                    <td><%= turno.estado %></td>
+                    <td><%= link_to "Ver detalle", turno_path(:id => turno.id) %></td>   
+                </tr>
+            <% end %>
+            
+        </table>
+        </div>
     <%end %>
 
 <% end %>
