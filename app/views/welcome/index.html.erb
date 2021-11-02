@@ -3,11 +3,15 @@
     <h2>Hola <%= current_user.nombre %> (<%= current_user.rol %>)</h2>
 
     <% @turnos = current_user.turnos %>
+
+    <% if @turnos.count == 0 %>
+        <p>Ud no tiene asignado ningun turno</p>
+    <% else %>
     <p> Tabla de turnos <% @turnos.count %><p>
 
     <div id="tabla_turnos"  >
     <table style="text-align:center;margin-right:auto;margin-left:auto">
-    
+
             <tr>
                 <th>Id</th>
                 <th>Tipo de Vacuna</th>
@@ -24,7 +28,9 @@
             </tr>
          <% end %>
         
-    </table>
-</div>
+     </table>
+    </div>
+    <%end %>
+
 <% end %>
 
