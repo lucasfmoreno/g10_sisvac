@@ -20,7 +20,7 @@
                 <td><%= turno.tipovacuna %></td>
                 <td><%= turno.observacion %></td>
                 <td><%= turno.estado %></td>
-                <td><%= button_to "Ver detalle", turno_path(:id => turno.id) %></td>   
+                <td><%= link_to "Ver detalle", turno_path(:id => turno.id) %></td>   
             </tr>
          <% end %>
         
