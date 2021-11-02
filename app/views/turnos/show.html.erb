@@ -9,3 +9,9 @@
 <% end %>
 <p>Estado = <%= @turno.estado %> </p>
 
+<%if @turno.estado=="Recibido"%>
+    <p> <%= link_to "Certificado Imprimible", turno_path(@turno, format:"pdf")%> </p>
+<%else%>
+
+<%end%%>
+

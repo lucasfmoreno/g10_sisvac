@@ -20,5 +20,12 @@ class TurnosController < ApplicationController
 
   def show
     @turno = Turno.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = TurnoPdf.new(@turno)
+        send_data pdf.render, filename: "order:#{@turno.id}.pdf", type: "application/pdf", disposition: "inline"
+      end
+    end
   end
 end
