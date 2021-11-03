@@ -12,8 +12,8 @@ class TurnoPdf < Prawn::Document
 
     def tabla_certifica
         move_down 20
-        text "Certifica que el paciente ha sido vacunado con:\n\##{@turno.tipovacuna}"
-        text "\nCon las siguientes observaciones:\n\##{@turno.observacion}"
+        text "Certifica que el paciente ha sido vacunado con:\n\ #{@turno.tipovacuna}"
+        text "\nCon las siguientes observaciones:\n\ #{@turno.observacion}"
     end
 
 end

@@ -4,6 +4,7 @@
 
 <p>ID = <%= @turno.id %></p>
 <p>Tipo Vacuna = <%= @turno.tipovacuna %></p>
+<p>Fecha de solicitud = <%= @turno.remember_created_at %></p>
 <% if @turno.observacion.nil? %>
     <p>Observacion = <%= @turno.observacion %></p> 
 <% end %>
@@ -13,5 +14,5 @@
     <p> <%= link_to "Certificado Imprimible", turno_path(@turno, format:"pdf")%> </p>
 <%else%>
 
-<%end%%>
+<%end%>
 

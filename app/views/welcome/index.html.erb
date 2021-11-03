@@ -13,16 +13,14 @@
         <table style="text-align:center;margin-right:auto;margin-left:auto">
 
                 <tr>
-                    <th>Id</th>
                     <th>Tipo de Vacuna</th>
-                    <th>Observacion</th>
+                    <th>Fecha de solicitud</th>
                     <th>Estado</th>
                 </tr>
             <% @turnos.each do |turno| %>
                 <tr>
-                    <td><%= turno.id %></td>
                     <td><%= turno.tipovacuna %></td>
-                    <td><%= turno.observacion %></td>
+                    <td><%= turno.remember_created_at %></td>
                     <td><%= turno.estado %></td>
                     <td><%= link_to "Ver detalle", turno_path(:id => turno.id) %></td>   
                 </tr>
