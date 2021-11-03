@@ -8,6 +8,8 @@ class User < ApplicationRecord
   def default_rol
     self.rol ||= "Paciente"
   end
-  validates :dni, uniqueness: true;
+  validates :dni, uniqueness: true,presence: true
+  validates :direccion, presence: true
+  validates :edad, presence:true
   
 end
