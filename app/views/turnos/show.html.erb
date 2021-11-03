@@ -2,13 +2,18 @@
 
 <h1>Detalle de turno</h1>
 
-<p>ID = <%= @turno.id %></p>
-<p>Tipo Vacuna = <%= @turno.tipovacuna %></p>
-<p>Fecha de solicitud = <%= @turno.remember_created_at %></p>
+<p>ID: <%= @turno.id %></p>
+<p>Tipo Vacuna: <%= @turno.tipovacuna %></p>
+<p>Fecha de solicitud: <%= @turno.remember_created_at %></p>
 <% if @turno.observacion.nil? %>
-    <p>Observacion = <%= @turno.observacion %></p> 
+    <p>Observacion: <%= @turno.observacion %></p> 
 <% end %>
-<p>Estado = <%= @turno.estado %> </p>
+<p>Estado:<%= @turno.estado %> </p>
+
+<%if @turno.estado=="Recibido" || @turno.estado=="Aceptado" %>
+<p>Fecha de Vacunacion: <%= @turno.fechaRecibir%> </p>
+<p>Lugar de Vacunacion: <%= @turno.lugar%> </p>
+<%end%>
 
 <%if @turno.estado=="Recibido"%>
     <p> <%= link_to "Certificado Imprimible", turno_path(@turno, format:"pdf")%> </p>
