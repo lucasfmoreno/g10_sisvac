@@ -10,11 +10,26 @@ class TurnosController < ApplicationController
     @usuario = current_user
     @turno=Turno.new(params[:turno].permit(:tipovacuna,:observacion))
     @turno.user_id = @usuario.id
-    if @turno.save
+    resultadoBoolean = true;
+    @turnos =  @usuario.turnos
+    tipoVacunaQueLlega = params[:turno][:tipovacuna]
+    puts "IMPRIMO TIPO VAC"
+    puts tipoVacunaQueLlega
+    @turnos.each do |turno|
+      if turno.tipovacuna == tipoVacunaQueLlega
+        resultadoBoolean = false;
+      end
+    end
+    if(resultadoBoolean == true)
+      if @turno.save 
         redirect_to root_path, :notice => "Enviado!"
-    else
+      else
         flash[:error] = "Hubo un error"
         render "new"
+      end
+    else
+      flash[:error] = "Hubo un error, ya habia un turno de ese tipo"
+      render "new"
     end
   end
 
