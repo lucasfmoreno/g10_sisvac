@@ -13,8 +13,6 @@ class TurnosController < ApplicationController
     resultadoBoolean = true;
     @turnos =  @usuario.turnos
     tipoVacunaQueLlega = params[:turno][:tipovacuna]
-    puts "IMPRIMO TIPO VAC"
-    puts tipoVacunaQueLlega
     @turnos.each do |turno|
       if turno.tipovacuna == tipoVacunaQueLlega
         resultadoBoolean = false;
@@ -28,8 +26,7 @@ class TurnosController < ApplicationController
         render "new"
       end
     else
-      flash[:error] = "Hubo un error, ya habia un turno de ese tipo"
-      render "new"
+      redirect_to root_path, :notice => "El turno no se agrego, usted ya tiene un turno para esa vacuna."
     end
   end
 
