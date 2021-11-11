@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'turnos/create'
   get 'turnos/show'
   get 'turnos/turno'
+  get '/search_user', to: 'search#search_user'
   root 'welcome#index'
   resources :vacunas
   resources :turnos

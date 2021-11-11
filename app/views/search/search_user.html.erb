@@ -1,0 +1,8 @@
+<h1>Resultados para la busqueda</h1>
+
+<%if !@get_user.nil? %>
+    <p> <%= @get_user.dni %> | <%= @get_user.nombre %> | <%= @get_user.apellido %>  </p>
+    <a href=""> Mas informacion </a>
+<%else%>
+    <p>Ningun resultado!</p>
+<%end%>

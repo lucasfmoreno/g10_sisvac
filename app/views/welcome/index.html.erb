@@ -2,6 +2,13 @@
 <% if user_signed_in? %>
     <h2>Hola <%= current_user.nombre %> (<%= current_user.rol %>)</h2>
 
+    <% if current_user.rol=="Vacunador"%>
+        <%= form_with url: "/search_user", method: :get do |form| %>
+            <%= form.text_field :dni %>
+            <%= form.submit "Search" %>
+        <% end %>
+    <%end%>
+
     <% @turnos = current_user.turnos %>
 
     <% if @turnos.count == 0 %>
