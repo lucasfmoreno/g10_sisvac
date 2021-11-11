@@ -11,6 +11,11 @@
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :nroref %><br />
+    <%= f.number_field :nroref, autofocus: true, autocomplete: "nroref" %>
+  </div>
+
   <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>

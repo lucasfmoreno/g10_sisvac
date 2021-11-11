@@ -1,5 +1,9 @@
-<p>Bienvenido <%= @email %>!</p>
+<p>Bienvenido a sisVac <%= @user.nombre %>!</p>
 
 <p>Podes confirmar tu cuenta mediante este link :</p>
+
+<p>Tu numero de tramite es = <h3><%= @user.nroref %><h3></p>
+<p>Se recomienda archivar este mail, o guardar copia del mismo, ya que el numero es necesario para ingresar al sistema</p>
+
 
 <p><%= link_to 'Confirmar mi cuenta', confirmation_url(@resource, confirmation_token: @token) %></p>
