@@ -8,4 +8,22 @@ class Turno < ApplicationRecord
 		self.estado ||= "Pendiente"
 	end
 
+	def elevarEstado
+		if(self.estado == "Pendiente")
+			self.estado = "Aceptado"
+		elsif (self.estado == "Aceptado")
+			self.estado = "Vacunado"
+		end
+		self.save
+	end
+
+	def reducirEstado
+		if(self.estado == "Aceptado")
+			self.estado = "Pendiente"
+		elsif (self.estado == "Vacunado")
+			self.estado = "Aceptado"
+		end
+		self.save
+	end
+
 end

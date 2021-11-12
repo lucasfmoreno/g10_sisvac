@@ -14,17 +14,19 @@
         .where(:fechaRecibir => Date.today).where(:tipovacuna => "GRIPE") %>
         <% @turnosFiebreAma = Turno.where(:lugar => current_user.vacunatorio).where(:estado => "Aceptado")
         .where(:fechaRecibir => Date.today).where(:tipovacuna => "FIEBRE AMARILLA") %>
+        <% @turnosAtendidosDia = Turno.where(:lugar => current_user.vacunatorio).where(:estado => "Vacunado")
+        .where(:fechaRecibir => Date.today)%>
 
         <% if (@turnosCovid.count+@turnosGripe.count+@turnosFiebreAma.count) == 0 %>
             <p>Su vacunatorio no tiene asignado ningun turno</p>
         <% else %>
-            <p> Turnos del dia = <b><%=(@turnosCovid.count+@turnosGripe.count+@turnosFiebreAma.count)%></b></p>
+            <p> Turnos restantes en el dia = <b><%=(@turnosCovid.count+@turnosGripe.count+@turnosFiebreAma.count)%></b></p>
             <% arreglo = ["COVID", "GRIPE", "FIEBRE AMARILLA"] %>
             <% arreglo2 = [@turnosCovid, @turnosGripe, @turnosFiebreAma] %>
             <% indice = 0 %>
             <% for tipovac in arreglo do %> 
                 <h2>Tabla <%=tipovac %></h2>
-                <div id="tabla_turnos">
+                <div id="tabla_turnos <%=arreglo[indice]%>">
                     <table style="text-align:center;margin-right:auto;margin-left:auto">
 
                             <tr>
@@ -46,6 +48,31 @@
                 </div>
             <%end%>
         <%end%>
+
+        <% if (@turnosAtendidosDia == 0) %>
+            <p>Su vacunatorio no atendio todavia ningun turno</p>
+        <% else %>
+            <p> Turnos atendidos en el dia = <b><%=(@turnosAtendidosDia.count)%></b></p>
+                <h2>Tabla YA ATENDIDOS</h2>
+                <div id="tabla_turnos_atendidos">
+                    <table style="text-align:center;margin-right:auto;margin-left:auto">
+                            <tr>
+                                <th>Tipo de Vacuna</th>
+                                <th>Fecha de solicitud</th>
+                                <th>Estado</th>
+                            </tr>
+                        <% @turnosAtendidosDia.each do |turno| %>
+                            <tr>
+                                <td><%= turno.tipovacuna %></td>
+                                <td><%= turno.remember_created_at %></td>
+                                <td><%= turno.estado %></td>
+                                <td><%= link_to "Ver detalle", turno_path(:id => turno.id) %></td>   
+                            </tr>
+                        <% end %>
+                    </table>
+                </div>
+        <%end%>
+
     <%end%>
 
     <%if current_user.rol=="Paciente"%>
