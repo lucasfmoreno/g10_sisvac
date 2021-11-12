@@ -10,14 +10,15 @@
 <% end %>
 <p>Estado:<%= @turno.estado %> </p>
 
-<%if @turno.estado=="Recibido" || @turno.estado=="Aceptado" %>
+<%if @turno.estado=="Aceptado" || @turno.estado=="Vacunado" %>
 <p>Fecha de Vacunacion: <%= @turno.fechaRecibir%> </p>
 <p>Lugar de Vacunacion: <%= @turno.lugar%> </p>
 <%end%>
 
-<%if @turno.estado=="Aceptado"%>
+<%if @turno.estado=="Vacunado"%>
     <p> <%= link_to "Certificado Imprimible", turno_path(@turno, format:"pdf")%> </p>
-<%else%>
-
 <%end%>
 
+<%if @usuario.rol=="Vacunador"%>
+    <p> SOY VACUNADOR, ACA VA CAMBIAR ESTADO </p>
+<%end%>

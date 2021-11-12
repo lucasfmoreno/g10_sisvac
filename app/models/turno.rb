@@ -4,7 +4,7 @@ class Turno < ApplicationRecord
 	before_save :default_date
 
 	def default_date
-		self.remember_created_at ||= DateTime.now
+		self.remember_created_at ||= Date.today
 		self.estado ||= "Pendiente"
 	end
 

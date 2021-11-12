@@ -10,6 +10,7 @@ class TurnosController < ApplicationController
     @usuario = current_user
     @turno=Turno.new(params[:turno].permit(:tipovacuna,:observacion))
     @turno.user_id = @usuario.id
+    @turno.lugar = current_user.vacunatorio
     resultadoBoolean = true;
     @turnos =  @usuario.turnos
     tipoVacunaQueLlega = params[:turno][:tipovacuna]
@@ -31,6 +32,7 @@ class TurnosController < ApplicationController
   end
 
   def show
+    @usuario = current_user
     @turno = Turno.find(params[:id])
     respond_to do |format|
       format.html

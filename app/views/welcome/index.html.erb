@@ -7,35 +7,64 @@
             <%= form.text_field :dni %>
             <%= form.submit "Search" %>
         <% end %>
+
+        <% @turnos = Turno.where(:lugar => current_user.vacunatorio).where(:estado => "Aceptado").where(:fechaRecibir => Date.today) %>
+        <% if @turnos.count == 0 %>
+            <p>Su vacunatorio no tiene asignado ningun turno</p>
+        <% else %>
+            <p> Tabla de turnos <% @turnos.count %><p>
+
+            <div id="tabla_turnos"  >
+            <table style="text-align:center;margin-right:auto;margin-left:auto">
+
+                    <tr>
+                        <th>Tipo de Vacuna</th>
+                        <th>Fecha de solicitud</th>
+                        <th>Estado</th>
+                    </tr>
+                <% @turnos.each do |turno| %>
+                    <tr>
+                        <td><%= turno.tipovacuna %></td>
+                        <td><%= turno.remember_created_at %></td>
+                        <td><%= turno.estado %></td>
+                        <td><%= link_to "Ver detalle", turno_path(:id => turno.id) %></td>   
+                    </tr>
+                <% end %>
+                
+            </table>
+            </div>
+        <%end %>
     <%end%>
 
-    <% @turnos = current_user.turnos %>
+    <%if current_user.rol=="Paciente"%>
+        <% @turnos = current_user.turnos %>
 
-    <% if @turnos.count == 0 %>
-        <p>Ud no tiene asignado ningun turno</p>
-    <% else %>
-        <p> Tabla de turnos <% @turnos.count %><p>
+        <% if @turnos.count == 0 %>
+            <p>Ud no tiene asignado ningun turno</p>
+        <% else %>
+            <p> Tabla de turnos <% @turnos.count %><p>
 
-        <div id="tabla_turnos"  >
-        <table style="text-align:center;margin-right:auto;margin-left:auto">
+            <div id="tabla_turnos"  >
+            <table style="text-align:center;margin-right:auto;margin-left:auto">
 
-                <tr>
-                    <th>Tipo de Vacuna</th>
-                    <th>Fecha de solicitud</th>
-                    <th>Estado</th>
-                </tr>
-            <% @turnos.each do |turno| %>
-                <tr>
-                    <td><%= turno.tipovacuna %></td>
-                    <td><%= turno.remember_created_at %></td>
-                    <td><%= turno.estado %></td>
-                    <td><%= link_to "Ver detalle", turno_path(:id => turno.id) %></td>   
-                </tr>
-            <% end %>
-            
-        </table>
-        </div>
-    <%end %>
+                    <tr>
+                        <th>Tipo de Vacuna</th>
+                        <th>Fecha de solicitud</th>
+                        <th>Estado</th>
+                    </tr>
+                <% @turnos.each do |turno| %>
+                    <tr>
+                        <td><%= turno.tipovacuna %></td>
+                        <td><%= turno.remember_created_at %></td>
+                        <td><%= turno.estado %></td>
+                        <td><%= link_to "Ver detalle", turno_path(:id => turno.id) %></td>   
+                    </tr>
+                <% end %>
+                
+            </table>
+            </div>
+        <%end %>
+    <%end%>
 
 <% end %>
 
