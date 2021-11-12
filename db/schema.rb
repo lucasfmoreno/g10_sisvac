@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_10_201922) do
+ActiveRecord::Schema.define(version: 2021_11_12_034223) do
 
   create_table "turnos", force: :cascade do |t|
     t.integer "user_id"
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(version: 2021_11_10_201922) do
     t.string "vacunatorio"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "vacunaAplicadas", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "tipo_vacuna"
+    t.integer "dosis"
+    t.string "observacion"
+    t.string "fecha_solicitud"
+    t.string "fecha_dada"
+    t.datetime "remember_created_at"
   end
 
 end
