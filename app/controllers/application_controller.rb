@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
 
 	protected
 	def configure_permitted_parameters
-		devise_parameter_sanitizer.permit(:sign_up, keys:[:nombre,:dni,:edad,:apellido,:direccion,:rol,:diabetico,:enfermedadCardio,:enfermadadCardioDesc,:Otros])
+		devise_parameter_sanitizer.permit(:sign_up, keys:[:nombre,:dni,:edad,:apellido,:direccion,:vacunatorio,:rol,:diabetico,:enfermedadCardio,:enfermadadCardioDesc,:Otros])
 		devise_parameter_sanitizer.permit(:sign_in, keys: [:dni,:nroref])
-		devise_parameter_sanitizer.permit(:account_update, keys: [:direccion])
+		devise_parameter_sanitizer.permit(:account_update, keys: [:direccion,:email,:vacunatorio])
 	end
 
 

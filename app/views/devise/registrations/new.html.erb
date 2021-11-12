@@ -19,6 +19,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :vacunatorio %><br />
+    <%= f.select :vacunatorio, ['Municipalidad','Terminal','Cementerio'] %>
+  </div>
+
+  <div class="field">
     <%= f.label :dni %><br />
     <%= f.number_field :dni, autofocus:true %>
   </div>

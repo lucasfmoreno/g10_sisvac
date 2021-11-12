@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  validates :dni, uniqueness: true,presence: true
+  validates :direccion, presence: true
+  validates :vacunatorio, presence:true
+  validates :edad, presence:true
+
   has_many :turnos
   has_one :search
   # Include default devise modules. Others available are:
@@ -20,9 +25,5 @@ class User < ApplicationRecord
       self.nroref = nroRandom
     end
   end
-
-  validates :dni, uniqueness: true,presence: true
-  validates :direccion, presence: true
-  validates :edad, presence:true
   
 end
