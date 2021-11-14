@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <h2>Ingresar</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -11,21 +12,35 @@
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :nroref %><br />
-    <%= f.number_field :nroref, autofocus: true, autocomplete: "nroref" %>
+  <input type="checkbox" id="checkbox"> ¿Paciente? </input>
+  <div id="container" style="display:none;">
+    <div class="field">
+      <%= f.label :nroref %><br />
+      <%= f.number_field :nroref, :value => 0 %>
+    </div>
   </div>
 
+  <p></p>
+  <div class="actions">
+    <%= f.submit "Ingresar" %>
+  </div>
+
+  <p></p>
+  <p></p>
   <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "Ingresar" %>
-  </div>
 <% end %>
+
+<script>
+$(document).ready(function(){
+	$('#checkbox').change(function(){
+      	$('#container').toggle();
+    });
+});
+</script>
 
 <%= render "devise/shared/links" %>
