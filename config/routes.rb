@@ -3,10 +3,8 @@ Rails.application.routes.draw do
   get 'turnos/new'
   get 'turnos/create'
   get 'turnos/show'
-
-  
-
   get 'turnos/turno'
+  get 'mis_datos/show'
   get '/search_user', to: 'search#search_user'
   root 'welcome#index'
   resources :vacunas
