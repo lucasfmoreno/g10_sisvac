@@ -1,4 +1,4 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 <h2>Ingresar</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -36,11 +36,11 @@
 <% end %>
 
 <script>
-$(document).ready(function(){
-	$('#checkbox').change(function(){
+(function($) {
+    $('#checkbox').change(function(){
       	$('#container').toggle();
     });
-});
+}(jQuery));
 </script>
 
 <%= render "devise/shared/links" %>
