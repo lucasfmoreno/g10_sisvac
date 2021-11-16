@@ -9,6 +9,7 @@ class Turno < ApplicationRecord
 	end
 
 	def elevarEstado
+		puts "SE ELEVA ESTADO"
 		if(self.estado == "Pendiente")
 			self.estado = "Aceptado"
 		elsif (self.estado == "Aceptado")

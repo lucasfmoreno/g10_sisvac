@@ -34,12 +34,7 @@ class TurnosController < ApplicationController
   def show
     @usuario = current_user
 
-    @turno = nil;
-    if(params[:elevarEstado] != nil)
-      @turno = Turno.find(params[:turno_id])
-    else
-      @turno = Turno.find(params[:id])
-    end
+    @turno = Turno.find(params[:id])
 
     respond_to do |format|
       format.html
@@ -49,17 +44,5 @@ class TurnosController < ApplicationController
       end
     end
 
-    puts "Estado = #{@turno.estado}"
-    puts "Elevar = #{params[:elevarEstado]}"
-
-    if (params[:elevarEstado] == "si")
-      @turno.elevarEstado
-      #redirect_to turno_path(:id => @turno.id), notice: "Se actualizo estado"
-      redirect_back(fallback_location: root_path)
-    elsif (params[:elevarEstado] == "no")
-      @turno.reducirEstado
-      #redirect_to turno_path(:id => @turno.id), notice: "Se actualizo estado"
-      redirect_back(fallback_location: root_path)
-    end
   end
 end

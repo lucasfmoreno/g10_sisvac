@@ -1,6 +1,6 @@
 class VacunaAplicada < ActiveRecord::Migration[6.1]
   def change
-    create_table :vacunaAplicadas do |t|
+    create_table :vacuna_dadas do |t|
       t.integer :user_id
       t.string :tipo_vacuna
       t.integer :dosis

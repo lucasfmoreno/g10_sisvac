@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2021_11_12_034223) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "vacunaAplicadas", force: :cascade do |t|
+  create_table "vacuna_dadas", force: :cascade do |t|
     t.integer "user_id"
     t.string "tipo_vacuna"
     t.integer "dosis"

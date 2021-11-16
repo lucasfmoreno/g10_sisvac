@@ -1,0 +1,30 @@
+<%= link_to "Volver", :back %> 
+
+<%@idTurno = params[:turno_id]%>
+<%@turnoRecuperado = Turno.find(@idTurno)%>
+<%@userId = @turnoRecuperado.user_id%>
+<h1>Vacunar</h1>
+
+<%= form_for(@vacunaNueva) do |f| %>
+    <input id="turno_id" name="turno_id" type="hidden" value="<%=@idTurno%>">
+    <input id="user_id" name="user_id" type="hidden" value=<%=@userId%>>
+    <div class="field">
+        <%= f.label :"Tipo de vacuna" %><br />
+        <%= f.text_field :tipo_vacuna, autofocus:true %>
+    </div>
+    <%if @turnoRecuperado.tipovacuna == "COVID"%>
+        <div class="field">
+            <%= f.label :"Dosis" %><br />
+            <%= f.number_field :dosis, :value => 1 %>
+        </div>
+    <%end%>
+    <div class="field">
+        <%= f.label :"Observacion" %><br />
+        <%= f.text_field :observacion, autofocus:true %>
+    </div>
+<br/>
+
+<p><%= f.submit "Finalizar"%></p>
+
+<% end %>
+

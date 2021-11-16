@@ -21,8 +21,6 @@
 
 <%if @usuario.rol=="Vacunador"%>
     <%if @turno.estado=="Aceptado"%>
-        <%= link_to "Elevar Estado", turno_cambiarEstado_path(:turno_id => @turno.id, :elevarEstado => "si") %>
-    <%elsif @turno.estado=="Vacunado"%>
-        <%= link_to "Reducir Estado", turno_cambiarEstado_path(:turno_id => @turno.id, :elevarEstado => "no") %>
+        <%= link_to "Vacunar", vacuna_dadas_new_path(:turno_id => @turno.id) %>
     <%end%>
 <%end%>
