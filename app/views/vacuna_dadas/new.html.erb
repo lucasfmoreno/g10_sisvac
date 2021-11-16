@@ -1,5 +1,7 @@
 <%= link_to "Volver", :back %> 
-
+<%flash.each do |type,msg|%>
+    <%=msg%>
+<%end%>
 <%@idTurno = params[:turno_id]%>
 <%@turnoRecuperado = Turno.find(@idTurno)%>
 <%@userId = @turnoRecuperado.user_id%>

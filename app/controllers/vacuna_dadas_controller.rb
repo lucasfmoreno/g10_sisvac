@@ -10,9 +10,14 @@ class VacunaDadasController < ApplicationController
     @vacNueva = VacunaDada.new(params[:vacuna_dada].permit(:tipo_vacuna,:dosis,:observacion))
     @vacNueva.user_id = @userId
     @vacNueva.fecha_solicitud = @turno.remember_created_at
-    @vacNueva.save
-    @turno.elevarEstado
-    redirect_to root_path, :notice => "Se atendio el turno"
+    if @vacNueva.save
+      @turno.elevarEstado
+      redirect_to root_path, :notice => "Se atendio el turno"
+    else
+      flash[:error] = "Hubo un error al agregar la vacuna"
+      @vacunaNueva=VacunaDada.new(params[:post])
+      render "new"
+    end
   end
 
   def show
