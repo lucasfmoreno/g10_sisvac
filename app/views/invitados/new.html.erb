@@ -1,4 +1,4 @@
-<h1>Hola</h1>
+<h1>Vacunar (FIEBRE AMARILLA) a paciente no registrado</h1>
 
 <%= form_for(@user) do |f| %>
 
@@ -53,8 +53,13 @@
   </div><br/>
   <div class="field">
     <%= f.label :Otros,"¿Algun otro padecimiento que quiera reportar?" %><br />
-    <%= f.text_field :Otros, autofocus:true, :placeholder=> "VACUNADOSINTURNO"%>
+    <%= f.text_field :Otros, autofocus:true%>
   </div><br/>
+
+   <input id="vacunar_sin_turno" name="vacunar_sin_turno" type="hidden" value="VACUNADOSINTURNO">
+  
+    <p>¿Alguna observacion de la Vacunacion?</p>
+    <input id="observacion_vacunacion" name="observacion_vacunacion" type="text">
 
   <div class="actions">
     <%= f.submit "Registrarse" %>
