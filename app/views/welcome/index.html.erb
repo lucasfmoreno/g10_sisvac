@@ -25,6 +25,7 @@
                 <p><b>Su vacunatorio no tiene asignado ningun turno</b></p>
             <% else %>
                 <p> Turnos restantes en el dia = <b><%=(@turnosCovid.count+@turnosGripe.count+@turnosFiebreAma.count)%></b></p>
+                <p>COVID:<%=@turnosCovid.count%> | GRIPE:<%=@turnosGripe.count%> | FIEBRE AMARILLA:<%=@turnosFiebreAma.count%></p>
                 <% arreglo = ["COVID", "GRIPE", "FIEBRE AMARILLA"] %>
                 <% arreglo2 = [@turnosCovid, @turnosGripe, @turnosFiebreAma] %>
                 <% indice = 0 %>
