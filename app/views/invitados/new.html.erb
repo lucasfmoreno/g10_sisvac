@@ -1,0 +1,63 @@
+<h1>Hola</h1>
+
+<%= form_for(@user) do |f| %>
+
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre, autofocus:true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :apellido %><br />
+    <%= f.text_field :apellido, autofocus:true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :direccion %><br />
+    <%= f.text_field :direccion, autofocus:true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :vacunatorio %><br />
+    <%= f.select :vacunatorio, ['Municipalidad','Terminal','Cementerio'] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :dni %><br />
+    <%= f.number_field :dni, autofocus:true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :edad %><br />
+    <%= f.number_field :edad, autofocus:true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div>
+    <%= f.label :diabetico, "¿Es Ud. diabetico?" %>
+    <%= f.check_box :diabetico,{},true %>
+  </div><br/>
+
+  <div>
+    <%= f.label :enfermedadCardio, "¿Presenta enfermedades cardiopaticas?" %>
+    <%= f.check_box :enfermedadCardio,{},true %>
+  </div><br/>
+  <div class="field">
+    <%= f.label :Otros,"¿Algun otro padecimiento que quiera reportar?" %><br />
+    <%= f.text_field :Otros, autofocus:true %>
+  </div><br/>
+
+  <div class="actions">
+    <%= f.submit "Registrarse" %>
+  </div>
+<% end %>
+

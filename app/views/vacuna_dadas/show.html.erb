@@ -1,2 +1,10 @@
-<h1>VacunaDadas#show</h1>
-<p>Find me in app/views/vacuna_dadas/show.html.erb</p>
+<h1>Mis Vacunas</h1>
+
+<%@vacuna=VacunaDada.where(:user_id => current_user.id)%>
+
+<% @vacuna.each do |f|%>
+
+<p><%= f.tipo_vacuna %></p> | <%= f.dosis%> | <%= f.observacion%> | <%= f.fecha_dada%> 
+<br>
+
+<%end%>
