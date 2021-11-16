@@ -31,6 +31,15 @@ class TurnosController < ApplicationController
     end
   end
 
+  def reducirTodos
+    @turnos = Turno.where(:lugar => current_user.vacunatorio).where(:estado => "Aceptado").where(:fechaRecibir => Date.today)
+    @turnos.each do |turno|
+      turno.reducirEstado
+    end
+    redirect_to root_path
+  end
+  helper_method :reducirTodos
+
   def show
     @usuario = current_user
 

@@ -7,7 +7,8 @@
             <%= form.text_field :dni %>
             <%= form.submit "Search" %>
         <% end %>
-
+        <br>
+        <%=button_to "Cerrar Vacunatorio",reducirTodos_path%>
         <% @turnosCovid = Turno.where(:lugar => current_user.vacunatorio).where(:estado => "Aceptado")
         .where(:fechaRecibir => Date.today).where(:tipovacuna => "COVID") %>
         <% @turnosGripe = Turno.where(:lugar => current_user.vacunatorio).where(:estado => "Aceptado")

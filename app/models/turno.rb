@@ -7,6 +7,7 @@ class Turno < ApplicationRecord
 		self.remember_created_at ||= Date.today
 		self.estado ||= "Pendiente"
 	end
+	
 
 	def elevarEstado
 		puts "SE ELEVA ESTADO"
@@ -21,8 +22,7 @@ class Turno < ApplicationRecord
 	def reducirEstado
 		if(self.estado == "Aceptado")
 			self.estado = "Pendiente"
-		elsif (self.estado == "Vacunado")
-			self.estado = "Aceptado"
+			self.fechaRecibir=nil
 		end
 		self.save
 	end

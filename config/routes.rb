@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'turnos/turno'
   get 'mis_datos/show'
   get '/search_user', to: 'search#search_user'
+  post "reducirTodos"=>"turnos#reducirTodos", as: :reducirTodos
   root 'welcome#index'
   resources :vacunas
   resources :turnos do
