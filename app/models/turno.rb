@@ -1,5 +1,6 @@
 class Turno < ApplicationRecord
 	belongs_to :user, optional: true
+	has_one :vacuna_dada
 	validates :tipovacuna, presence: true
 	before_save :default_date
 

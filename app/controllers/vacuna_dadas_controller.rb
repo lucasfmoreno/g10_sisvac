@@ -9,6 +9,7 @@ class VacunaDadasController < ApplicationController
     @userId = params[:user_id]
     @vacNueva = VacunaDada.new(params[:vacuna_dada].permit(:tipo_vacuna,:dosis,:observacion))
     @vacNueva.user_id = @userId
+    @vacNueva.turno_id=@turno.id
     @vacNueva.fecha_solicitud = @turno.remember_created_at
     if @vacNueva.save
       @turno.elevarEstado

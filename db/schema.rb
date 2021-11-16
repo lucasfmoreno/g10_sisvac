@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_12_034223) do
+ActiveRecord::Schema.define(version: 2021_11_16_191237) do
 
   create_table "turnos", force: :cascade do |t|
     t.integer "user_id"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2021_11_12_034223) do
     t.string "fecha_solicitud"
     t.string "fecha_dada"
     t.datetime "remember_created_at"
+    t.integer "turno_id"
   end
 
 end

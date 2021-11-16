@@ -2,9 +2,22 @@
 
 <%@vacuna=VacunaDada.where(:user_id => current_user.id)%>
 
-<% @vacuna.each do |f|%>
 
-<p><%= f.tipo_vacuna %></p> | <%= f.dosis%> | <%= f.observacion%> | <%= f.fecha_dada%> 
-<br>
-
-<%end%>
+<table style="text-align:center;float:left;padding-left: 50px;">
+                                    <tr>
+                                        <th>Tipo de Vacuna</th>
+                                        <th>Dosis</th>
+                                        <th>Observacion</th>
+                                        <th>Fecha Recibida</th>
+                                    </tr>
+                                    
+                                    <% @vacuna.each do |f|%>
+                                    <tr>
+                                        <td><%= f.tipo_vacuna %></td>
+                                        <td><%= f.dosis %></td>
+                                        <td><%= f.observacion %></td>
+                                        <td><%= link_to "Ver detalle", turno_path(:id => f.turno_id)%></td> 
+                                    </tr>  
+                                    <%end%>
+                                    
+                            </table>
