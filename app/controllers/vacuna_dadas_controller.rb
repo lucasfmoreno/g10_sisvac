@@ -9,6 +9,7 @@ class VacunaDadasController < ApplicationController
     @userId = params[:user_id]
     @vacNueva = VacunaDada.new(params[:vacuna_dada].permit(:tipo_vacuna,:dosis,:observacion))
     @vacNueva.user_id = @userId
+    @vacNueva.fecha_solicitud = @turno.remember_created_at
     @vacNueva.save
     @turno.elevarEstado
     redirect_to root_path, :notice => "Se atendio el turno"
