@@ -17,7 +17,9 @@
         .where(:fechaRecibir => Date.today).where(:tipovacuna => "FIEBRE AMARILLA") %>
         <% @turnosAtendidosDia = Turno.where(:lugar => current_user.vacunatorio).where(:estado => "Vacunado")
         .where(:fechaRecibir => Date.today)%>
-
+         <strong><p style="text-align:center"> CANTIDAD DE VACUNAS A DAR</p></strong>
+         <p style="text-align:center">COVID:<%=@turnosCovid.count%> | GRIPE:<%=@turnosGripe.count%> | FIEBRE AMARILLA:<%=@turnosFiebreAma.count%></p>
+                
         <hr style="position:relative; top:20px;clear: left;"></hr>
 
         <div id="tablas_turnos" style="position:relative; top:20px;clear: left;"%>
@@ -25,7 +27,6 @@
                 <p><b>Su vacunatorio no tiene asignado ningun turno</b></p>
             <% else %>
                 <p> Turnos restantes en el dia = <b><%=(@turnosCovid.count+@turnosGripe.count+@turnosFiebreAma.count)%></b></p>
-                <p>COVID:<%=@turnosCovid.count%> | GRIPE:<%=@turnosGripe.count%> | FIEBRE AMARILLA:<%=@turnosFiebreAma.count%></p>
                 <% arreglo = ["COVID", "GRIPE", "FIEBRE AMARILLA"] %>
                 <% arreglo2 = [@turnosCovid, @turnosGripe, @turnosFiebreAma] %>
                 <% indice = 0 %>
