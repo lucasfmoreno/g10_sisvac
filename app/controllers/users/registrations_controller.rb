@@ -12,10 +12,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    super
     @usuarioLlego = params.require(:user).permit(:nombre,:email,:password,:dni,:edad,:apellido,:direccion,:vacunatorio,:rol,:diabetico,:enfermedadCardio,:enfermadadCardioDesc,:Otros)
 
     @dniDelUltimo = User.find(User.maximum(:id)).id
-    super
+    
     @usuarioCreado = User.find(User.maximum(:id))
 
     @campoVacunadoSin = params[:vacunar_sin_turno]
