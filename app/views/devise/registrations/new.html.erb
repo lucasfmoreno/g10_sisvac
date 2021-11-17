@@ -52,19 +52,10 @@
   </div><br/>
 
   <div>
-    <%= f.label :diabetico, "¿Es Ud. diabetico?" %>
+    <%= f.label :diabetico, "¿Es Ud. de riesgo?" %>
     <%= f.check_box :diabetico,{},true %>
   </div><br/>
-
-  <div>
-    <%= f.label :enfermedadCardio, "¿Presenta enfermedades cardiopaticas?" %>
-    <%= f.check_box :enfermedadCardio,{},true %>
-  </div><br/>
-  <div class="field">
-    <%= f.label :Otros,"¿Algun otro padecimiento que quiera reportar?" %><br />
-    <%= f.text_field :Otros, autofocus:true %>
-  </div><br/>
-
+  
   <div class="actions">
     <%= f.submit "Registrarse" %>
   </div>
