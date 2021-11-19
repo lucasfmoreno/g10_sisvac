@@ -6,7 +6,21 @@
 <%= form_for(@turno) do |f| %>
 <div class="field">
     <%= f.label :"Tipo de vacuna" %><br />
-    <%= f.select :tipovacuna,['COVID','FIEBRE AMARILLA','GRIPE'] %>
+    <%@arregloVacunas = ['COVID','FIEBRE AMARILLA','GRIPE']%>
+    <%if (current_user.edad > 60)%>
+        <%@arregloVacunas.delete("FIEBRE AMARILLA")%>
+    <%end%>
+    <%turnosVacunadosGripe = Turno.where(:user_id => current_user.id).where(:tipovacuna => "GRIPE").where(:estado => "Vacunado")%>
+    <%if (turnosVacunadosGripe.count != 0)%>
+        <% for turnoVacunado in turnosVacunadosGripe do %>
+            <%fechaVacunacion = Date.parse(turnoVacunado.fechaRecibir)%>
+            <%fechaHaceUnAnio = Date.today - 1.year%>
+            <%if (fechaVacunacion>fechaHaceUnAnio)%>
+                <%@arregloVacunas.delete("GRIPE")%>
+            <%end%>
+        <%end%>
+    <%end%>
+    <%= f.select :tipovacuna, @arregloVacunas%>
 </div>
 <div class="field">
     <%= f.label :"Obeservacion" %><br />
@@ -17,4 +31,3 @@
 <p><%= f.submit "Enviar Pedido" %></p>
 
 <% end %>
-

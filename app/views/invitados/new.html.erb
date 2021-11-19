@@ -1,5 +1,10 @@
 <h1>Vacunar (FIEBRE AMARILLA) a paciente no registrado</h1>
 
+<br>
+<%flash.each do |type,msg|%>
+    <b><%=msg%></b>
+<%end%>
+
 <%= form_for(@user) do |f| %>
 
   <div class="field">
