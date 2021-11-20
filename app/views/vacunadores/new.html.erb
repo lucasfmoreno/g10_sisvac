@@ -1,0 +1,58 @@
+<h1>Vacunadores#new</h1>
+<br>
+<%flash.each do |type,msg|%>
+    <b><%=msg%></b>
+<%end%>
+
+<%= form_for(@user) do |f| %>
+
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre, autofocus:true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :apellido %><br />
+    <%= f.text_field :apellido, autofocus:true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :direccion %><br />
+    <%= f.text_field :direccion, autofocus:true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :vacunatorio %><br />
+    <%= f.select :vacunatorio, ['Municipalidad','Terminal','Cementerio'] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :dni %><br />
+    <%= f.number_field :dni, autofocus:true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :edad %><br />
+    <%= f.number_field :edad, autofocus:true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+   <input id="vacunar_sin_turno" name="vacunar_sin_turno" type="hidden" value="VACUNADOSINTURNO">
+   <input id="vengo_de_new" name="vengo_de_new" type="hidden" value="si">
+  
+    <p>¿Alguna observacion de la Vacunacion?</p>
+    <input id="observacion_vacunacion" name="observacion_vacunacion" type="text">
+
+  <div class="actions">
+    <%= f.submit "Registrarse" %>
+  </div>
+<% end %>

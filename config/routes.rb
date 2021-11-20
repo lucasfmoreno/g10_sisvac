@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'vacunadores/new'
+  get 'vacunadores/create'
   get 'invitados/new'
   get 'invitados/show'
   get 'vacuna_dadas/new'
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
   get 'mis_datos/show'
   get 'invitados/new'
   get 'invitados/show'
+  get 'vacunadores/new'
+  get 'vacunadores/create'
   get '/search_user', to: 'search#search_user'
   post "reducirTodos"=>"turnos#reducirTodos", as: :reducirTodos
   root 'welcome#index'
