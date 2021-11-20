@@ -13,6 +13,9 @@
                                     <td><%= @get_user.dni %></td>
                                         <td><%= @get_user.nombre %></td>
                                         <td><%= @get_user.apellido %></td>
+                                        <%if current_user.rol=="Administrador"%>
+                                            <td> <%= link_to "Ver detalle", cambios_edit_path(:id => current_user.id) %></td>
+                                        <%end%>
                                     </tr>
     </table>            
     <br>
@@ -21,6 +24,7 @@
     <%if @turno[0].nil?%>
         <p>El paciente no tiene ningun turno en estado Aceptado!</p>
     <%else%>
+    <%if current_user.rol!="Administrador"%>
         <table style="text-align:center;float:left;padding-left: 50px;">
                                         <tr>
                                             <th>Tipo de Vacuna</th>
@@ -36,6 +40,7 @@
         </tr>
         <% end %>
     </table>
+    <%end%>
     <%end%>
                     
 <%else%>

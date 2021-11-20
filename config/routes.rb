@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'cambios/edit'
+  get 'cambios/update'
   get 'vacunadores/new'
   get 'vacunadores/create'
   get 'invitados/new'
@@ -16,6 +18,8 @@ Rails.application.routes.draw do
   get 'invitados/show'
   get 'vacunadores/new'
   get 'vacunadores/create'
+  get 'cambios/edit'
+  post 'cambios/update'
   get '/search_user', to: 'search#search_user'
   post "reducirTodos"=>"turnos#reducirTodos", as: :reducirTodos
   root 'welcome#index'

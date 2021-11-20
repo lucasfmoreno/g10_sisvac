@@ -1,0 +1,15 @@
+<h1>Cambio de Posta</h1>
+
+<p> <%= @user.id %> </p>
+
+<%= form_tag('update',method: 'post') do |f|%>
+    <%=label_tag(:nroref,"NROREF")%>
+    <%=text_field_tag(:nroref)%>
+
+    <%=hidden_field_tag :id,@user.id %>
+
+<div class="actions">
+    <%= submit_tag "Modificar" %>
+  </div>
+
+<%end%>
