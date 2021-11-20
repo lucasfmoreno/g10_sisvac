@@ -5,13 +5,13 @@
     <%if current_user.rol=="Administrador"%>
         <%= form_with url: "/search_user", method: :get do |form| %>
             <%= form.text_field :dni %>
-            <%= form.submit "Search" %>
+            <%= form.submit "Buscar Vacunador" %>
         <% end %>
     <%end%>
     <% if current_user.rol=="Vacunador"%>
         <%= form_with url: "/search_user", method: :get do |form| %>
             <%= form.text_field :dni %>
-            <%= form.submit "Search" %>
+            <%= form.submit "Buscar Paciente" %>
         <% end %>
         <br>
         <%=button_to "Cerrar Vacunatorio",reducirTodos_path%>
