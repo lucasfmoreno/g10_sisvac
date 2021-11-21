@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'turnos/new'
   get 'turnos/create'
   get 'turnos/show'
+  get 'turnos/update'
   get 'turnos/turno'
   get 'mis_datos/show'
   get 'invitados/new'

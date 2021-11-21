@@ -1,0 +1,12 @@
+<h2>Hola <%= @user.nombre %>!</h2>
+<h2>Se actualizo el estado de su turno</h2>
+
+<p></p>
+
+<p><b>Vacuna solicitada:</b> <%=@turno.tipovacuna%></p>
+<p><b>Fecha de solicitud:</b> <%=@turno.remember_created_at%></p>
+<p><b>Vacunatorio:</b> <%=@turno.lugar%></p>
+<p><b>Resultado de la solicitud:</b> <%=@turno.estado%></p>
+<%if @turno.estado=="Aceptado"%>
+    <p><b>Fecha de vacunacion:</b> <%=@turno.fechaRecibir%></p>
+<%end%>

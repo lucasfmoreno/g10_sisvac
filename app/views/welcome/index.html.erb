@@ -7,6 +7,30 @@
             <%= form.text_field :dni %>
             <%= form.submit "Buscar Vacunador" %>
         <% end %>
+
+        <p></p>
+        <p></p>
+        <p></p>
+
+        <div id="tabla_turnos_pendientes"" style="">
+            <table style="text-align:center;float:left;padding-left: 50px;">
+                <caption>Tabla de turnos a asignar</b></caption>
+                <tr>
+                    <th>Tipo de Vacuna</th>
+                    <th>Fecha de solicitud</th>
+                    <th>Estado</th>
+                </tr>
+                <% @turnosPendientes.each do |turnoPendiente| %>
+                    <tr>
+                        <td><%= turnoPendiente.tipovacuna %></td>
+                        <td><%= turnoPendiente.remember_created_at %></td>
+                        <td><%= turnoPendiente.estado %></td>
+                        <td><%= link_to "Ver detalle", turno_path(:id => turnoPendiente.id) %></td>   
+                    </tr>
+                <% end %>
+            </table>
+        </div>
+
     <%end%>
     <% if current_user.rol=="Vacunador"%>
         <%= form_with url: "/search_user", method: :get do |form| %>

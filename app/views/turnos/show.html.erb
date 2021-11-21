@@ -24,3 +24,22 @@
         <%= link_to "Vacunar", vacuna_dadas_new_path(:turno_id => @turno.id) %>
     <%end%>
 <%end%>
+
+<%if @usuario.rol=="Administrador"%>
+    <h1>Informacion del paciente</h1>
+    <p>Nombre: <%= @usuarioDelTurno.nombre %></p>
+    <p>DNI: <%= @usuarioDelTurno.dni %></p>
+    <p>Edad: <%= @usuarioDelTurno.edad %></p>
+    <p>Es de riesgo? <%= @usuarioDelTurno.diabetico %></p>
+    
+    <h1>Informacion del vacunatorio (<%=@usuarioDelTurno.vacunatorio%>)</h1>
+    <p>Cantidad de vacunadores: <%= @vacunadoresEnVacunatorioDelUsuario %></p>
+    <p>Turnos que restan por atender: <%= @turnosRestantesVacunatorioDelUsuario %></p>
+
+    <h1>Asignar turno</h1>
+    <%= form_for(@turno) do |f| %>
+        <p>Fecha a asignar (Formato = "AAAA-MM-DD")</p>
+        <input id="fecha_asignada" name="fecha_asignada" type="date">
+        <p><%= f.submit "Enviar Pedido" %></p>
+    <% end %>
+<%end%>

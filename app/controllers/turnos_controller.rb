@@ -31,6 +31,16 @@ class TurnosController < ApplicationController
     end
   end
 
+  def update
+    turnoAAsignar = Turno.find(params[:id])
+    turnoAAsignar.fechaRecibir = params[:fecha_asignada]
+    turnoAAsignar.estado = "Aceptado"
+    turnoAAsignar.save
+    usuario = User.find(turnoAAsignar.user_id)
+    TurnoAsignadoMailer.with(user: usuario, turno: turnoAAsignar).info_turno.deliver_now
+    redirect_to root_path, :notice => "Se asigno turno"
+  end
+
   def reducirTodos
     @turnos = Turno.where(:lugar => current_user.vacunatorio).where(:estado => "Aceptado").where(:fechaRecibir => Date.today)
     @turnos.each do |turno|
@@ -42,8 +52,14 @@ class TurnosController < ApplicationController
 
   def show
     @usuario = current_user
+    
 
     @turno = Turno.find(params[:id])
+
+    @usuarioDelTurno = User.find(@turno.user_id)
+    @turnosRestantesVacunatorioDelUsuario = Turno.where(:lugar => @usuarioDelTurno.vacunatorio).where(:estado => "Aceptado").count
+    @vacunadoresEnVacunatorioDelUsuario = User.where(:vacunatorio => @usuarioDelTurno.vacunatorio).where(:rol => "Vacunador").count
+    
 
     respond_to do |format|
       format.html
