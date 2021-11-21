@@ -30,7 +30,7 @@
     <p>Nombre: <%= @usuarioDelTurno.nombre %></p>
     <p>DNI: <%= @usuarioDelTurno.dni %></p>
     <p>Edad: <%= @usuarioDelTurno.edad %></p>
-    <p>Es de riesgo? <%= @usuarioDelTurno.diabetico %></p>
+    <p>Es de riesgo? <% if(@usuarioDelTurno.diabetico == true) %> <b>SI</b> <%else%> <b>NO</b> <%end%></p>
     
     <h1>Informacion del vacunatorio (<%=@usuarioDelTurno.vacunatorio%>)</h1>
     <p>Cantidad de vacunadores: <%= @vacunadoresEnVacunatorioDelUsuario %></p>
@@ -40,6 +40,6 @@
     <%= form_for(@turno) do |f| %>
         <p>Fecha a asignar (Formato = "AAAA-MM-DD")</p>
         <input id="fecha_asignada" name="fecha_asignada" type="date">
-        <p><%= f.submit "Enviar Pedido" %></p>
+        <p><%= f.submit "Asignar Turno" %><%= f.submit "Rechazar Turno" %></p>
     <% end %>
 <%end%>
