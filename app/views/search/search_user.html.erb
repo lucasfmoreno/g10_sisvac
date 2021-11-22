@@ -14,7 +14,9 @@
                                         <td><%= @get_user.nombre %></td>
                                         <td><%= @get_user.apellido %></td>
                                         <%if current_user.rol=="Administrador"%>
-                                            <td> <%= link_to "Ver detalle", cambios_edit_path(:id => current_user.id) %></td>
+                                            <td> <%= link_to "Ver detalle", cambios_edit_path(:id => @get_user.id) %></td>
+                                            <td> <%= link_to "Eliminar usuario", eliminar_vacunadores_delete_path(:id => @get_user.id) %></td>
+                                     
                                         <%end%>
                                     </tr>
     </table>            

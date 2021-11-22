@@ -1,10 +1,14 @@
 <h1>Cambio de Posta</h1>
 
-<p> <%= @user.id %> </p>
+<p> Nombre: <%=@user.nombre%> </p>
+<p> Apellido: <%=@user.apellido%> </p>
+<p> Vacunatorio Actual: <%=@user.vacunatorio%> </p> <br>
 
 <%= form_tag('update',method: 'post') do |f|%>
-    <%=label_tag(:nroref,"NROREF")%>
-    <%=text_field_tag(:nroref)%>
+
+    <%= label_tag(:vacunatorio,"Nuevo vacunatorio") %><br />
+    <%= select_tag :vacunatorio , options_for_select(["Municipalidad","Terminal","Cementerio"]) %>
+  </div>
 
     <%=hidden_field_tag :id,@user.id %>
 

@@ -6,8 +6,8 @@ class CambiosController < ApplicationController
 
   def update
     @user=User.find(params[:id])
-    if (@user.update(:nroref=>params[:nroref]))
-      redirect_to root_path
+    if (@user.update(:vacunatorio=>params[:vacunatorio]))
+      redirect_to root_path, :notice => "Cambiado!"
     end
   end
 end
