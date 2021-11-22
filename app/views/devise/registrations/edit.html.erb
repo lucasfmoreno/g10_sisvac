@@ -10,20 +10,20 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  
-  <div class="field">
-    <%= f.label :vacunatorio %><br />
-    <% array = nil %>
-    <% if @user.vacunatorio == 'Municipalidad'%>
-      <% array = ['Municipalidad','Terminal','Cementerio'] %>
-    <% elsif @user.vacunatorio == 'Terminal'%>
-      <% array = ['Terminal','Municipalidad','Cementerio'] %>
-    <% else %>
-      <% array = ['Cementerio','Municipalidad','Terminal'] %>
-    <% end %>
-    <%= f.select :vacunatorio, array %>
-  </div>
-  
+  <%if current_user.rol != "Vacunador"%>
+    <div class="field">
+      <%= f.label :vacunatorio %><br />
+      <% array = nil %>
+      <% if @user.vacunatorio == 'Municipalidad'%>
+        <% array = ['Municipalidad','Terminal','Cementerio'] %>
+      <% elsif @user.vacunatorio == 'Terminal'%>
+        <% array = ['Terminal','Municipalidad','Cementerio'] %>
+      <% else %>
+        <% array = ['Cementerio','Municipalidad','Terminal'] %>
+      <% end %>
+      <%= f.select :vacunatorio, array %>
+    </div>
+  <%end%>
   <br/>
   <div class ="field">
     <%= f.label :direccion %> <br />
