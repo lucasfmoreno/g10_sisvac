@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_16_191237) do
+ActiveRecord::Schema.define(version: 2021_11_24_173236) do
 
   create_table "turnos", force: :cascade do |t|
     t.integer "user_id"
@@ -62,6 +62,13 @@ ActiveRecord::Schema.define(version: 2021_11_16_191237) do
     t.string "fecha_dada"
     t.datetime "remember_created_at"
     t.integer "turno_id"
+  end
+
+  create_table "vacunatorios", force: :cascade do |t|
+    t.string "nombre"
+    t.string "zona"
+    t.string "direccion"
+    t.datetime "remember_created_at"
   end
 
 end
