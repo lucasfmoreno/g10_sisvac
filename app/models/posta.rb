@@ -1,0 +1,2 @@
+class Posta < ApplicationRecord
+end

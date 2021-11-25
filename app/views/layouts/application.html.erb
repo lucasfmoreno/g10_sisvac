@@ -25,6 +25,7 @@
       <strong><%=link_to "Vacunar Paciente No Registrado",invitados_new_path(),:class => 'navbar-link' %> </strong>|
     <%else%>
         <strong><%=link_to "Crear Vacunador",vacunadores_new_path(),:class => 'navbar-link' %> </strong> |
+        <%=link_to "Editar Postas",postas_edit_path(),:class => 'navbar-link' %> |
     <%end%>
     <%=link_to "Mis Datos",mis_datos_show_path(),:class => 'navbar-link' %> |
     <%= link_to "Cerrar sesion", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>

@@ -1,6 +1,6 @@
-class Vacunatorios < ActiveRecord::Migration[6.1]
+class CreatePosta < ActiveRecord::Migration[6.1]
   def change
-    create_table :vacunatorios do |t|
+    create_table :posta do |t|
       t.string :nombre
       t.string :zona
       t.string :direccion

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'postas/edit'
+  get 'vacunatorios/new'
+  get 'vacunatorios/edit'
   get 'eliminar_vacunadores/delete'
   get 'cambios/edit'
   get 'cambios/update'
@@ -21,6 +24,7 @@ Rails.application.routes.draw do
   get 'vacunadores/new'
   get 'vacunadores/create'
   get 'cambios/edit'
+  get 'postas/edit'
   post 'cambios/update'
   get '/search_user', to: 'search#search_user'
   delete 'eliminar_vacunadores/delete'
