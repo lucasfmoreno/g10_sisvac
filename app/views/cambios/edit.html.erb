@@ -1,19 +1,20 @@
 <h1>Cambio de Posta</h1>
 
-<p> Nombre: <%=@user.nombre%> </p>
-<p> Apellido: <%=@user.apellido%> </p>
-<p> Vacunatorio Actual: <%=@user.vacunatorio%> </p> <br>
+<div class="center-table">
+  <p> Nombre: <%=@user.nombre%> </p>
+  <p> Apellido: <%=@user.apellido%> </p>
+  <p> Vacunatorio Actual: <%=@user.vacunatorio%> </p> <br>
 
-<%= form_tag('update',method: 'post') do |f|%>
+  <div>
+    <%= form_tag('update',method: 'post') do |f|%>
 
-    <%= label_tag(:vacunatorio,"Nuevo vacunatorio") %><br />
-    <%= select_tag :vacunatorio , options_for_select(["Municipalidad","Terminal","Cementerio"]) %>
+        <%= label_tag(:vacunatorio,"Nuevo vacunatorio") %><br />
+        <%= select_tag :vacunatorio , options_for_select(["Municipalidad","Terminal","Cementerio"]) %>
+        <%=hidden_field_tag :id,@user.id %>
+
+    <div class="actions">
+        <%= submit_tag "Modificar" %>
+    </div>
   </div>
-
-    <%=hidden_field_tag :id,@user.id %>
-
-<div class="actions">
-    <%= submit_tag "Modificar" %>
-  </div>
-
-<%end%>
+  <%end%>
+</div>

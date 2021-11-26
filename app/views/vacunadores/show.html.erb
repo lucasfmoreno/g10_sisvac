@@ -1,0 +1,26 @@
+
+<% arreglo = ["Municipalidad", "Terminal", "Cementerio"] %>
+<% arreglo2 = [@usermuni, @usercem, @usertermi] %>
+<% indice = 0 %>
+    <% for tipovac in arreglo do %> 
+        <div >
+            <table class="table-vac">
+                <caption><b><%=arreglo[indice]%></b></caption>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>   
+                </tr>
+                <% @vacunador = arreglo2[indice] %>
+                <% indice += 1 %>
+                <% @vacunador.each do |v| %>
+                    <tr>
+                        <td><%= v.nombre %></td>
+                        <td><%= v.apellido %></td>
+                        <td> <%= link_to "Ver detalle", cambios_edit_path(:id => v.id) %></td>
+                        <td> <%= link_to "Eliminar usuario", eliminar_vacunadores_delete_path(:id => v.id) %></td>                                   
+                    </tr>
+                <% end %>
+            </table>
+        </div>
+    <%end%>
+                    

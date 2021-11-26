@@ -1,3 +1,17 @@
 // Place all the styles related to the vacunadores controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.table-vac{
+    text-align:center;
+    float:left;
+    padding-right:15px;
+    padding-left:15px;
+    border:black 1px solid;
+    margin: 1rem;
+}
+
+.table-vac caption{
+    border:black 1px solid;
+
+}

@@ -25,7 +25,9 @@ Rails.application.routes.draw do
   get 'vacunadores/create'
   get 'cambios/edit'
   get 'postas/edit'
+  get 'vacunadores/show'
   post 'cambios/update'
+  post 'postas/update'
   get '/search_user', to: 'search#search_user'
   delete 'eliminar_vacunadores/delete'
   post "reducirTodos"=>"turnos#reducirTodos", as: :reducirTodos

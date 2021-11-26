@@ -1,2 +1,23 @@
-<h1>Postas#edit</h1>
-<p>Find me in app/views/postas/edit.html.erb</p>
+
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
+<h1>Cambio de informacion de Postas</h1>
+<%array=[]%>
+<%@posta.each do |t|%>
+    <%nombre= t.zona%>
+    <%array << nombre%>
+<%end%>
+<div class="center-table">
+    <%= form_with(url:"update") do |f|%>
+        <%=f.select :zona , array%>
+        <%=f.label :nombre%>
+        <%=f.text_field :nombre%>
+        <%=f.label :direccion%>
+        <%= f.text_field :direccion%>
+        <%= f.submit "Modificar" %>
+    <%end%>
+</div>

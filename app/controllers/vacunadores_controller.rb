@@ -9,4 +9,10 @@ class VacunadoresController < ApplicationController
       @user = User.new(:email => "fulano@hotmail.com", :password => "tugoi2021",:password_confirmation=>"tugoi2021")
       @user.save
   end
+
+  def show
+    @usermuni = User.where(:rol=>"Vacunador").where(:vacunatorio=>"Municipalidad")
+    @usercem = User.where(:rol=>"Vacunador").where(:vacunatorio=>"Cementerio")
+    @usertermi = User.where(:rol=>"Vacunador").where(:vacunatorio=>"Terminal")
+  end
 end
