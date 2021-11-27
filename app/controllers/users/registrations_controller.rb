@@ -49,6 +49,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         @user=User.new(params.require(:user).permit(:nombre,:email,:password,:dni,:edad,:apellido,:direccion,:vacunatorio,:rol,:diabetico,:enfermedadCardio,:enfermadadCardioDesc,:Otros))
         render "invitados/new"
       end
+
     elsif (params[:vengo_de_new_vacunadores] == "si")
       @usuarioLlego = params.require(:user).permit(:nombre,:email,:password,:dni,:edad,:apellido,:direccion,:vacunatorio)
       if ((User.where(:dni => @usuarioLlego.require(:dni)).count==0) && (User.where(:email => @usuarioLlego.require(:email)).count==0))
@@ -76,11 +77,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end    
   end
   private
-
-  
-  def unacosa
-    puts "JAJAJJAA"
-  end
 
   def sign_up_params
     params.require(:user).permit(:nombre,:email,:password,:dni,:edad,:apellido,:direccion,:vacunatorio,:rol,:enfermedadCardio)

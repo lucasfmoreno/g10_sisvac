@@ -1,5 +1,8 @@
 class TurnosController < ApplicationController
   def index
+    @turnosPendientesEnTerminal = Turno.where(:estado => "Pendiente").where(:lugar => "Terminal").limit(20)
+      @turnosPendientesEnCementerio = Turno.where(:estado => "Pendiente").where(:lugar => "Cementerio").limit(20)
+      @turnosPendientesEnMunicipalidad = Turno.where(:estado => "Pendiente").where(:lugar => "Municipalidad").limit(20)
   end
 
   def new

@@ -38,7 +38,6 @@
 
     <h1>Asignar turno</h1>
     <%= form_for(@turno) do |f| %>
-        <p>Fecha a asignar (Formato = "AAAA-MM-DD")</p>
         <input id="fecha_asignada" name="fecha_asignada" type="date">
         <p><%= f.submit "Asignar Turno" %><%= f.submit "Rechazar Turno" %></p>
     <% end %>
