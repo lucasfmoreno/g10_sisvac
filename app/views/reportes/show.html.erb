@@ -1,0 +1,61 @@
+<h1>Mis Reportes</h1>
+
+<%= form_with(url:"show") do |f| %>
+        <!-- <p>Fecha a asignar (Formato = "AAAA-MM-DD")</p> -->
+        <%= f.date_field :fechaRecibir, :value=>Date.today%>
+        <%= f.submit "Buscar" %>
+<% end %>
+
+<h2>Resultados para la fecha <%=params[:fechaRecibir]%></h2>
+<%if params[:fechaRecibir].nil?%>
+<p>V</p>
+<%end%>
+
+<br>
+<table class="center-table">
+<caption><b>Municipalidad</b></caption>
+    <tr>
+        <th>Cantidad Total de Vacunas</th>
+        <th>Cantidad COVID</th>
+        <th>Cantidad Fiebre Amarilla</th>
+        <th>Cantidad Gripe</th>
+    </tr>
+        <td><%= @turno.where(:lugar=>"Municipalidad").count %></td>
+        <td><%= @covid.where(:lugar=>"Municipalidad").count %></td>
+        <td><%= @fa.where(:lugar=>"Municipalidad").count %></td>
+        <td><%= @gr.where(:lugar=>"Municipalidad").count %></td>
+    <tr>
+    </tr>
+</table>
+<br>
+<table class="center-table">
+<caption><b>Cementerio</b></caption>
+    <tr>
+        <th>Cantidad Total de Vacunas</th>
+        <th>Cantidad COVID</th>
+        <th>Cantidad Fiebre Amarilla</th>
+        <th>Cantidad Gripe</th>
+    </tr>
+        <td><%= @turno.where(:lugar=>"Cementerio").count %></td>
+        <td><%= @covid.where(:lugar=>"Cementerio").count %></td>
+        <td><%= @fa.where(:lugar=>"Cementerio").count %></td>
+        <td><%= @gr.where(:lugar=>"Cementerio").count %></td>
+    <tr>
+    </tr>
+</table>
+<br>
+<table class="center-table">
+<caption><b>Terminal</b></caption>
+    <tr>
+        <th>Cantidad Total de Vacunas</th>
+        <th>Cantidad COVID</th>
+        <th>Cantidad Fiebre Amarilla</th>
+        <th>Cantidad Gripe</th>
+    </tr>
+        <td><%= @turno.where(:lugar=>"Terminal").count %></td>
+        <td><%= @covid.where(:lugar=>"Terminal").count %></td>
+        <td><%= @fa.where(:lugar=>"Terminal").count %></td>
+        <td><%= @gr.where(:lugar=>"Terminal").count %></td>
+    <tr>
+    </tr>
+</table>

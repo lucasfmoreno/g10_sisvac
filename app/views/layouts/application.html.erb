@@ -15,7 +15,7 @@
     
     <p class="navbar-text float-right">
   <% if user_signed_in? %>
-    Logueado como <strong><%= current_user.email %></strong>.
+    Logueado como <strong><%= current_user.email %></strong>.<br>
     <%=link_to "Inicio", root_path,:class=> 'navbar-link' %> |
     <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> |
     <%if current_user.rol=="Paciente"%>
@@ -27,6 +27,7 @@
         <strong><%=link_to "Crear Vacunador",vacunadores_new_path(),:class => 'navbar-link' %> </strong> |
         <%=link_to "Editar Postas",postas_edit_path(),:class => 'navbar-link' %> |
         <%=link_to "Lista de Vacunadores",vacunadores_show_path(),:class => 'navbar-link' %> |
+        <%=link_to "Mi Reporte",reportes_show_path(:fechaRecibir=>Date.today),:class => 'navbar-link' %> |
     <%end%>
     <%=link_to "Mis Datos",mis_datos_show_path(),:class => 'navbar-link' %> |
     <%= link_to "Cerrar sesion", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>

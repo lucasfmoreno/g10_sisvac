@@ -10,6 +10,7 @@ class PostasController < ApplicationController
       redirect_to root_path, :notice=>"Cambiado!"
     else
       flash[:error] = "No pueden haber campos vacios"
+      @posta=Posta.all
       render :edit
     end
   end

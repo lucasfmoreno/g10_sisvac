@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'reportes/show'
   get 'postas/edit'
   get 'vacunatorios/new'
   get 'vacunatorios/edit'
@@ -30,6 +31,8 @@ Rails.application.routes.draw do
   post 'postas/update'
   get '/search_user', to: 'search#search_user'
   delete 'eliminar_vacunadores/delete'
+  post 'reportes/show'
+  post 'reportes/search'
   post "reducirTodos"=>"turnos#reducirTodos", as: :reducirTodos
   root 'welcome#index'
   resources :vacunas
