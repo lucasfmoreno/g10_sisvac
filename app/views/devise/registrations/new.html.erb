@@ -1,5 +1,9 @@
 <h2>Registro</h2>
 
+<%flash.each do |type,msg|%>
+    <b><%=msg%></b>
+<%end%>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -54,7 +58,25 @@
   <div>
     <%= f.label :diabetico, "¿Es Ud. de riesgo?" %>
     <%= f.check_box :diabetico,{},true %>
-  </div><br/>
+  </div>
+
+  <p></p>
+
+  <div>
+    <%= f.label :se_puso_covid, "¿Se aplico vacuna COVID?"%>
+    <%= f.check_box :se_puso_covid%>
+    <%= f.label :dosis_covid, "¿Ultima dosis colocada?" %>
+    <%= f.number_field :dosis_covid, value: 0 %>
+  </div>
+
+  <div>
+    <%= f.label :se_puso_gripe, "¿Se aplico vacuna GRIPE?" %>
+    <%= f.check_box :se_puso_gripe%>
+    <%= f.label :fecha_gripe, "Fecha de la vacunacion GRIPE" %>
+    <%= f.date_field :fecha_gripe, value: Date.today%>
+  </div>
+
+  <br/>
   
   <div class="actions">
     <%= f.submit "Registrarse" %>

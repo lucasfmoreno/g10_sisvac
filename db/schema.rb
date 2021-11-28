@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_25_003439) do
+ActiveRecord::Schema.define(version: 2021_11_27_203309) do
 
   create_table "posta", force: :cascade do |t|
     t.string "nombre"
@@ -56,6 +56,10 @@ ActiveRecord::Schema.define(version: 2021_11_25_003439) do
     t.string "unlock_token"
     t.datetime "locked_at"
     t.string "vacunatorio"
+    t.boolean "se_puso_covid"
+    t.integer "dosis_covid"
+    t.boolean "se_puso_gripe"
+    t.string "fecha_gripe"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
