@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
 .center-table{
 
    text-align: center;
@@ -6,30 +8,44 @@
 }
 
 .center-table th{
-
    padding-right: 2em;
-
 }
 
 .navbar-text.float-right{
    margin-top: 0%;
    position: fixed;
    top:0;
+   left:0;
    width: 100%;
    height: 56px;
-   background-color: rgb(56, 156, 43);
+   font-family: "Montserrat", sans-serif;
+   background-color: rgb(150, 206, 122);
 
 }
 .navbar-text.float-right a{
    padding-right: 1rem;
    padding-left: 1rem;
-
    text-decoration: none;
    color: black;
-   transition-duration: 0.3s;
+   font-size: 0.84em;
+   font-weight: 500;
+   text-transform: uppercase;
+   display: inline-block;
+   -webkit-transition: all 0.2s ease-in-out;
+   transition: all 0.2s ease-in-out;
 }
 
 .navbar-text.float-right a:hover{
-   background-color: rgba(50, 212, 29, 0.644);
+   color: #155728;
    transition-duration: 0.3s;
 }
+.msg{
+   padding-top: 2rem;
+}
+
+.logo{
+   position: fixed;
+   top:0px;
+   right: 0px;
+}
+
