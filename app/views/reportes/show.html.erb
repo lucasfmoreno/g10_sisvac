@@ -1,8 +1,8 @@
 <h1>Mis Reportes</h1>
 
-<%= form_with(url:"show") do |f| %>
+<%= form_with(url:"show", method: "GET") do |f| %>
         <!-- <p>Fecha a asignar (Formato = "AAAA-MM-DD")</p> -->
-        <%= f.date_field :fechaRecibir, :value=>Date.today%>
+        <%= f.date_field :fechaRecibir, :value=>Date.today %>
         <%= f.submit "Buscar" %>
 <% end %>
 
