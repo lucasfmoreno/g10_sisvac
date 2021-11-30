@@ -17,8 +17,10 @@
     </div>
     <%if @turnoRecuperado.tipovacuna == "COVID"%>
         <div class="field">
-            <%= f.label :"Dosis" %><br />
-            <%= f.number_field :dosis, :value => 1 %>
+            <%usuarioVacunado = User.find(@userId)%>
+            <%dosisDadasDelPaciente = (Turno.where(:user_id => @userId).where(:tipovacuna => "COVID").where(:estado => "Vacunado").count)+1%>
+            <%= f.label "Dosis (El paciente ya tiene puestas #{dosisDadasDelPaciente} dosis de covid)" %><br />
+            <%= f.number_field :dosis, :value => dosisDadasDelPaciente %>
         </div>
     <%end%>
     <div class="field">
