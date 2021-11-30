@@ -36,7 +36,7 @@
         <% @turno.each do |turno| %>
                                         <tr>
                                             <td><%= turno.tipovacuna %></td>
-                                            <td><%= turno.remember_created_at %></td>
+                                            <td><%= turno.remember_created_at.strftime("%d/%m/%Y") %></td>
                                             <td><%= turno.estado %></td>
         <td><%= link_to "Ver detalle", turno_path(:id => turno.id) %></td>   
         </tr>

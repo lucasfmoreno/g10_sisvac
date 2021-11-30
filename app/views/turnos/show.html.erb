@@ -4,7 +4,7 @@
 
 <p>ID: <%= @turno.id %></p>
 <p>Tipo Vacuna: <%= @turno.tipovacuna %></p>
-<p>Fecha de solicitud: <%= @turno.remember_created_at %></p>
+<p>Fecha de solicitud: <%= @turno.remember_created_at.strftime("%d/%m/%Y") %></p>
 <% if !@turno.observacion.nil? %>
     <p>Observacion: <%= @turno.observacion %></p> 
 <% end %>

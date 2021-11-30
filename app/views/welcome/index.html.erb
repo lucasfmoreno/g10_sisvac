@@ -33,7 +33,7 @@
                 <% @turnosPendientesEnMunicipalidad.each do |turnoPendiente| %>
                     <tr>
                         <td><%= turnoPendiente.tipovacuna %></td>
-                        <td><%= turnoPendiente.remember_created_at %></td>
+                        <td><%= turnoPendiente.remember_created_at.strftime("%d/%m/%Y") %></td>
                         <td><%= turnoPendiente.estado %></td>
                         <td><%= link_to "Ver detalle", turno_path(:id => turnoPendiente.id) %></td>   
                     </tr>
@@ -52,7 +52,7 @@
                 <% @turnosPendientesEnTerminal.each do |turnoPendiente| %>
                     <tr>
                         <td><%= turnoPendiente.tipovacuna %></td>
-                        <td><%= turnoPendiente.remember_created_at %></td>
+                        <td><%= turnoPendiente.remember_created_at.strftime("%d/%m/%Y") %></td>
                         <td><%= turnoPendiente.estado %></td>
                         <td><%= link_to "Ver detalle", turno_path(:id => turnoPendiente.id) %></td>   
                     </tr>
@@ -71,7 +71,7 @@
                 <% @turnosPendientesEnCementerio.each do |turnoPendiente| %>
                     <tr>
                         <td><%= turnoPendiente.tipovacuna %></td>
-                        <td><%= turnoPendiente.remember_created_at %></td>
+                        <td><%= turnoPendiente.remember_created_at.strftime("%d/%m/%Y") %></td>
                         <td><%= turnoPendiente.estado %></td>
                         <td><%= link_to "Ver detalle", turno_path(:id => turnoPendiente.id) %></td>   
                     </tr>
@@ -125,7 +125,7 @@
                                 <% @turnosAListar.each do |turno| %>
                                     <tr>
                                         <td><%= turno.tipovacuna %></td>
-                                        <td><%= turno.remember_created_at %></td>
+                                        <td><%= turno.remember_created_at.strftime("%d/%m/%Y") %></td>
                                         <td><%= turno.estado %></td>
                                         <td><%= link_to "Ver detalle", turno_path(:id => turno.id) %></td>   
                                     </tr>
@@ -154,7 +154,7 @@
                             <% @turnosAtendidosDia.each do |turno| %>
                                 <tr>
                                     <td><%= turno.tipovacuna %></td>
-                                    <td><%= turno.remember_created_at %></td>
+                                    <td><%= turno.remember_created_at.strftime("%d/%m/%Y") %></td>
                                     <td><%= turno.estado %></td>
                                     <td><%= link_to "Ver detalle", turno_path(:id => turno.id) %></td>   
                                 </tr>
@@ -185,7 +185,7 @@
                 <% @turnos.each do |turno| %>
                     <tr>
                         <td><%= turno.tipovacuna %></td>
-                        <td><%= turno.remember_created_at %></td>
+                        <td><%= turno.remember_created_at.strftime("%d/%m/%Y") %></td>
                         <td><%= turno.estado %></td>
                         <td><%= link_to "Ver detalle", turno_path(:id => turno.id) %></td>   
                     </tr>
