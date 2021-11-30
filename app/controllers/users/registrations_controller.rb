@@ -102,7 +102,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         if(@usuarioCreado.dni != @dniDelUltimo && @usuarioCreado.email == @usuarioLlego.require(:email))
           if(@usuarioCreado.se_puso_gripe == true)
             turno = Turno.new(:user_id => @usuarioCreado.id, :tipovacuna => "GRIPE", :remember_created_at=>@usuarioCreado.fecha_gripe, :estado=>"Vacunado", :fechaRecibir => @usuarioCreado.fecha_gripe,
-              :lugar => @user.vacunatorio, :observacion => "")
+              :lugar => "VACUNADO ANTES DE REGISTRARSE", :observacion => "")
             turno.save
             vacunaDada = VacunaDada.new(:user_id => @usuarioCreado.id, :turno_id => turno.id, :tipo_vacuna=>turno.tipovacuna, :fecha_solicitud=>turno.remember_created_at,
               :fecha_dada=>turno.remember_created_at, :observacion => "")
@@ -111,8 +111,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
             #Me fijo si paso mas de un año de la vacunacion
             fechaVacunacion = Date.parse(@usuarioCreado.fecha_gripe)
             fechaHaceUnAño = Date.today - 1.year
-            pasoMasDeUnAño = fechaVacunacion>fechaHaceUnAño
-            if(pasoMasDeUnAño)
+            pasoMasDeUnAño = fechaVacunacion<fechaHaceUnAño
+            if(pasoMasDeUnAño==true)
               turnoNuevo = Turno.new(:user_id => @usuarioCreado.id, :tipovacuna => "GRIPE", :estado => "Pendiente", :lugar => @usuarioCreado.vacunatorio)
               turnoNuevo.save
             end
@@ -127,7 +127,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
             cantidadDosis = @usuarioCreado.dosis_covid
             for dosis in 1..cantidadDosis
               turno = Turno.new(:user_id => @usuarioCreado.id, :tipovacuna => "COVID", :remember_created_at=>@usuarioCreado.fecha_gripe, :estado=>"Vacunado", :fechaRecibir => @usuarioCreado.fecha_gripe,
-                :lugar => @user.vacunatorio, :observacion => "")
+                :lugar => "VACUNADO ANTES DE REGISTRARSE", :observacion => "")
               turno.save
               vacunaDada = VacunaDada.new(:user_id => @usuarioCreado.id, :turno_id => turno.id, :tipo_vacuna=>turno.tipovacuna, :fecha_solicitud=>turno.remember_created_at,
                 :fecha_dada=>turno.remember_created_at, :observacion => "", :dosis => dosis)
