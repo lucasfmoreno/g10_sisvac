@@ -11,6 +11,7 @@
     <%nombre= t.zona%>
     <%array << nombre%>
 <%end%>
+
 <div class="center-table">
     <%= form_with(url:"update") do |f|%>
         <%=f.select :zona , array%>
@@ -20,4 +21,12 @@
         <%= f.text_field :direccion%>
         <%= f.submit "Modificar" %>
     <%end%>
+</div>
+<div>
+  <h2> Postas Existentes </h2>
+    <%@posta.each do |t|%>
+     <p>Nombre: <%=t.nombre%> </p>
+     <p>Direccion: <%=t.direccion%> </p>
+     <p>zona: <%=t.zona%> </p><br>
+<%end%>
 </div>
