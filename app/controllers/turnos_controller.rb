@@ -37,16 +37,25 @@ class TurnosController < ApplicationController
   def update
     turnoAAsignar = Turno.find(params[:id])
     if(params[:commit]=="Asignar Turno")
-      turnoAAsignar.fechaRecibir = params[:fecha_asignada]
-      turnoAAsignar.estado = "Aceptado"
-      turnoAAsignar.save
+      fechaLlego = params[:fecha_asignada]
+      if(Date.parse(fechaLlego)>Date.today)
+        turnoAAsignar.fechaRecibir = fechaLlego
+        turnoAAsignar.estado = "Aceptado"
+        turnoAAsignar.save
+        usuario = User.find(turnoAAsignar.user_id)
+        TurnoAsignadoMailer.with(user: usuario, turno: turnoAAsignar).info_turno.deliver_now
+        redirect_to root_path, :notice => "Se asigno el turno"
+      else
+        redirect_to root_path, :notice => "FECHA ERRONEA, MENOR A DIA ACTUAL"
+      end
     elsif (params[:commit]=="Rechazar Turno")
       turnoAAsignar.estado = "Rechazado"
       turnoAAsignar.save
+      usuario = User.find(turnoAAsignar.user_id)
+      TurnoAsignadoMailer.with(user: usuario, turno: turnoAAsignar).info_turno.deliver_now
+      redirect_to root_path, :notice => "Se rechazo el turno"
     end
-    usuario = User.find(turnoAAsignar.user_id)
-    TurnoAsignadoMailer.with(user: usuario, turno: turnoAAsignar).info_turno.deliver_now
-    redirect_to root_path, :notice => "Se proceso el turno"
+    
   end
 
   def reducirTodos
