@@ -13,7 +13,7 @@
     <%turnosVacunadosGripe = Turno.where(:user_id => current_user.id).where(:tipovacuna => "GRIPE").where(:estado => "Vacunado")%>
     <%if (turnosVacunadosGripe.count != 0)%>
         <% for turnoVacunado in turnosVacunadosGripe do %>
-            <%fechaVacunacion = Date.parse(turnoVacunĸado.fechaRecibir)%>
+            <%fechaVacunacion = Date.parse(turnoVacunado.fechaRecibir)%>
             <%fechaHaceUnAnio = Date.today - 1.year%>
             <%if (fechaVacunacion<fechaHaceUnAnio)%>
                 <%@arregloVacunas.delete("GRIPE")%>
