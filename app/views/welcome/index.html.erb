@@ -15,7 +15,7 @@
         <p></p>
 
         <%= form_for :filtro, url: root_path, method: :get do |form| %>
-            <%= form.text_field :tipo_vacuna %>
+            <%= form.select :tipo_vacuna, ['TIPO VACUNA', 'GRIPE', 'COVID', 'FIEBRE AMARILLA'] %>
             <%= form.date_field :fecha_asignada %>
             <input id="vengo_filtro_vacuna" name="vengo_filtro_vacuna" type="hidden" value="SI">
             <%= form.submit "Aplicar Filtro" %>

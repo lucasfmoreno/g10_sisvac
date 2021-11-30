@@ -83,8 +83,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
         flash[:error] = "Se puso GRIPE pero no indica fecha."
         @user=User.new(params.require(:user).permit(:nombre,:email,:password,:dni,:edad,:apellido,:direccion,:vacunatorio))
         render "devise/registrations/new"
+      elsif (@usuarioLlego.require(:se_puso_gripe)=="1"&&@usuarioLlego.require(:fecha_gripe).to_date>Date.today)
+        flash[:error] = "Se puso GRIPE fecha es posterior a hoy."
+        @user=User.new(params.require(:user).permit(:nombre,:email,:password,:dni,:edad,:apellido,:direccion,:vacunatorio))
+        render "devise/registrations/new"
+      elsif(@usuarioLlego.require(:se_puso_covid)=="1"&&@usuarioLlego.require(:dosis_covid)>"3")
+        flash[:error] = "Se puso COVID pero dosis > 3."
+        @user=User.new(params.require(:user).permit(:nombre,:email,:password,:dni,:edad,:apellido,:direccion,:vacunatorio))
+        render "devise/registrations/new"
       else
-        @dniDelUltimo = User.find(User.maximum(:id)).dni
+        if(User.all.count > 0)
+          @dniDelUltimo = User.find(User.maximum(:id)).dni
+        else
+          @dniDelUltimo = 999999999
+        end
         super
         @usuarioCreado = User.find(User.maximum(:id))
         if(@usuarioCreado.dni != @dniDelUltimo && @usuarioCreado.email == @usuarioLlego.require(:email))

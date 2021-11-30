@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
       filtro_vacuna = params[:filtro][:tipo_vacuna]
       filtro_fecha = params[:filtro][:fecha_asignada]
       puts "LOS PARAMS CON CADA UNO = #{filtro_vacuna} Y #{filtro_fecha}"
-      if(filtro_fecha != "" && filtro_vacuna != "")
+      if(filtro_fecha != "" && filtro_vacuna != "TIPO VACUNA")
         @turnosPendientesEnTerminal = Turno.where(:estado => "Pendiente").where(:lugar => "Terminal").where(:tipovacuna => filtro_vacuna).where(:remember_created_at => filtro_fecha).limit(20)
         @turnosPendientesEnCementerio = Turno.where(:estado => "Pendiente").where(:lugar => "Cementerio").where(:tipovacuna => filtro_vacuna).where(:remember_created_at => filtro_fecha).limit(20)
         @turnosPendientesEnMunicipalidad = Turno.where(:estado => "Pendiente").where(:lugar => "Municipalidad").where(:tipovacuna => filtro_vacuna).where(:remember_created_at => filtro_fecha).limit(20)
@@ -18,7 +18,7 @@ class WelcomeController < ApplicationController
         @turnosPendientesEnTerminal = Turno.where(:estado => "Pendiente").where(:lugar => "Terminal").where(:remember_created_at => filtro_fecha).limit(20)
         @turnosPendientesEnCementerio = Turno.where(:estado => "Pendiente").where(:lugar => "Cementerio").where(:remember_created_at => filtro_fecha).limit(20)
         @turnosPendientesEnMunicipalidad = Turno.where(:estado => "Pendiente").where(:lugar => "Municipalidad").where(:remember_created_at => filtro_fecha).limit(20)
-      elsif (filtro_vacuna != "")
+      elsif (filtro_vacuna != "TIPO VACUNA")
         @turnosPendientesEnTerminal = Turno.where(:estado => "Pendiente").where(:lugar => "Terminal").where(:tipovacuna => filtro_vacuna).limit(20)
         @turnosPendientesEnCementerio = Turno.where(:estado => "Pendiente").where(:lugar => "Cementerio").where(:tipovacuna => filtro_vacuna).limit(20)
         @turnosPendientesEnMunicipalidad = Turno.where(:estado => "Pendiente").where(:lugar => "Municipalidad").where(:tipovacuna => filtro_vacuna).limit(20)
