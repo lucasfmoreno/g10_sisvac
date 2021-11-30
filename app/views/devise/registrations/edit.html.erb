@@ -10,7 +10,7 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <%if current_user.rol != "Vacunador"%>
+  <%if current_user.rol != "Vacunador" && current_user.rol!="Administrador"%>
     <div class="field">
       <%= f.label :vacunatorio %><br />
       <% array = nil %>
