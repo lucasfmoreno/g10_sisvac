@@ -1,5 +1,10 @@
 <%= link_to "Volver", :back %> 
 
+<p></p>
+<%flash.each do |type,msg|%>
+    <b><%=msg%></b>
+<%end%>
+
 <h1>Detalle de turno</h1>
 
 <p>ID: <%= @turno.id %></p>

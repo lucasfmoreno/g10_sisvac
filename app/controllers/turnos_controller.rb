@@ -46,7 +46,20 @@ class TurnosController < ApplicationController
         TurnoAsignadoMailer.with(user: usuario, turno: turnoAAsignar).info_turno.deliver_now
         redirect_to root_path, :notice => "Se asigno el turno"
       else
-        redirect_to root_path, :notice => "FECHA ERRONEA, MENOR A DIA ACTUAL"
+        flash[:error] = "FECHA ERRONEA, MENOR A DIA ACTUAL"
+        @usuario = current_user
+        @turno = Turno.find(params[:id])
+        @usuarioDelTurno = User.find(@turno.user_id)
+        @turnosRestantesVacunatorioDelUsuario = Turno.where(:lugar => @usuarioDelTurno.vacunatorio).where(:estado => "Aceptado").count
+        @vacunadoresEnVacunatorioDelUsuario = User.where(:vacunatorio => @usuarioDelTurno.vacunatorio).where(:rol => "Vacunador").count
+        respond_to do |format|
+          format.html
+          format.pdf do
+            pdf = TurnoPdf.new(@turno)
+            send_data pdf.render, filename: "order:#{@turno.id}.pdf", type: "application/pdf", disposition: "inline"
+          end
+        end
+        render "turnos/show"
       end
     elsif (params[:commit]=="Rechazar Turno")
       turnoAAsignar.estado = "Rechazado"
@@ -55,7 +68,6 @@ class TurnosController < ApplicationController
       TurnoAsignadoMailer.with(user: usuario, turno: turnoAAsignar).info_turno.deliver_now
       redirect_to root_path, :notice => "Se rechazo el turno"
     end
-    
   end
 
   def reducirTodos
@@ -69,14 +81,12 @@ class TurnosController < ApplicationController
 
   def show
     @usuario = current_user
-    
 
     @turno = Turno.find(params[:id])
 
     @usuarioDelTurno = User.find(@turno.user_id)
     @turnosRestantesVacunatorioDelUsuario = Turno.where(:lugar => @usuarioDelTurno.vacunatorio).where(:estado => "Aceptado").count
     @vacunadoresEnVacunatorioDelUsuario = User.where(:vacunatorio => @usuarioDelTurno.vacunatorio).where(:rol => "Vacunador").count
-    
 
     respond_to do |format|
       format.html
