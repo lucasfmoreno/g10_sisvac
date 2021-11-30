@@ -12,6 +12,9 @@
 
 <%if @turno.estado=="Aceptado" || @turno.estado=="Vacunado" %>
 <p>Fecha de Vacunacion: <%= @turno.fechaRecibir%> </p>
+    <% @posta=Posta.where(:zona=>@turno.lugar).first %>
+<p>Nombre: <%=@posta.nombre%> </p>
+<p>Direccion: <%=@posta.direccion%> </p>
 <p>Lugar de Vacunacion: <%= @turno.lugar%> </p>
 <%end%>
 
@@ -32,7 +35,11 @@
     <p>Edad: <%= @usuarioDelTurno.edad %></p>
     <p>Es de riesgo? <% if(@usuarioDelTurno.diabetico == true) %> <b>SI</b> <%else%> <b>NO</b> <%end%></p>
     
+
+    <%@postadmin=Posta.where(:zona=>@usuarioDelTurno.vacunatorio).first%>
     <h1>Informacion del vacunatorio (<%=@usuarioDelTurno.vacunatorio%>)</h1>
+    <p>Nombre del centro: <%= @postadmin.nombre %></p>
+    <p>Direccion: <%= @postadmin.direccion %></p>
     <p>Cantidad de vacunadores: <%= @vacunadoresEnVacunatorioDelUsuario %></p>
     <p>Turnos que restan por atender: <%= @turnosRestantesVacunatorioDelUsuario %></p>
 
