@@ -22,9 +22,9 @@
             <%=link_to "Reiniciar Filtro", root_path%>
         <% end  %>
 <hr>
-
-        <div id="tabla_turnos_pendientes_muni"" style="">
-            <table style="text-align:center;float:left;padding-left: 50px;" class="table-vac">
+    <div class="gridear inside_table">
+        <div id="tabla_turnos_pendientes_muni" >
+            <table style="text-align:center;float:left;padding-left: 50px;" class="table-vac zoomed">
                 <caption>Tabla de turnos a asignar en MUNICIPALIDAD</b></caption>
                 <tr>
                     <th>Tipo de Vacuna</th>
@@ -36,14 +36,14 @@
                         <td><%= turnoPendiente.tipovacuna %></td>
                         <td><%= turnoPendiente.remember_created_at.strftime("%d/%m/%Y") %></td>
                         <td><%= turnoPendiente.estado %></td>
-                        <td><%= link_to "Ver detalle", turno_path(:id => turnoPendiente.id) %></td>   
+                        <td class="espacio"><%= link_to "Ver detalle", turno_path(:id => turnoPendiente.id) %></td>   
                     </tr>
                 <% end %>
             </table>
         </div>
-
+        
         <div id="tabla_turnos_pendientes_termi"" style="">
-            <table style="text-align:center;float:left;padding-left: 50px;" class="table-vac">
+            <table style="text-align:center;float:left;padding-left: 50px;" class="table-vac zoomed">
                 <caption>Tabla de turnos a asignar en TERMINAL</b></caption>
                 <tr>
                     <th>Tipo de Vacuna</th>
@@ -55,14 +55,14 @@
                         <td><%= turnoPendiente.tipovacuna %></td>
                         <td><%= turnoPendiente.remember_created_at.strftime("%d/%m/%Y") %></td>
                         <td><%= turnoPendiente.estado %></td>
-                        <td><%= link_to "Ver detalle", turno_path(:id => turnoPendiente.id) %></td>   
+                       <td class="espacio"><%= link_to "Ver detalle", turno_path(:id => turnoPendiente.id) %></td>   
                     </tr>
                 <% end %>
             </table>
         </div>
 
-        <div id="tabla_turnos_pendientes_cementerio"" style="">
-            <table style="text-align:center;float:left;padding-left: 50px;"class="table-vac"> 
+        <div id="tabla_turnos_pendientes_cementerio" style="">
+            <table style="text-align:center;float:left;padding-left: 50px;"class="table-vac zoomed"> 
                 <caption>Tabla de turnos a asignar en CEMENTERIO</b></caption>
                 <tr>
                     <th>Tipo de Vacuna</th>
@@ -74,13 +74,13 @@
                         <td><%= turnoPendiente.tipovacuna %></td>
                         <td><%= turnoPendiente.remember_created_at.strftime("%d/%m/%Y") %></td>
                         <td><%= turnoPendiente.estado %></td>
-                        <td><%= link_to "Ver detalle", turno_path(:id => turnoPendiente.id) %></td>   
+                        <td class="espacio"><%= link_to "Ver detalle", turno_path(:id => turnoPendiente.id) %></td>   
                     </tr>
                 <% end %>
             </table>
         </div>
         
-
+    </div>
         
 
     <%end%>

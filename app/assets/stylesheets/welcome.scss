@@ -1,3 +1,22 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.gridear{
+    display: grid;
+    grid-template-columns:repeat(3,1fr) ;
+}
+
+.inside_table td{
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+.inside_table .espacio{
+    padding-left: 0.6em;
+}
+
+.zoomed:hover{
+    transform: scale(1.05);
+   transition-duration: 0.3s;
+}
