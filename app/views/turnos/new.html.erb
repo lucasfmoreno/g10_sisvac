@@ -32,7 +32,7 @@
     <!-- Elimino del listado cualquier vacuna que tenga al menos un turno en estado != a vacunado -->
     <%turnosTotales = Turno.where(:user_id => current_user.id)%>
     <% for turnoActual in turnosTotales do %>
-        <%if (turnoActual.estado != "Vacunado")%>
+        <%if (turnoActual.estado != "Vacunado"||turnoActual.estado != "Rechazado")%>
             <p><b>No se puede poner <%=turnoActual.tipovacuna%>, ya tiene un turno pedido/aceptado.</b></p>
             <%@arregloVacunas.delete(turnoActual.tipovacuna)%>
         <%end%>

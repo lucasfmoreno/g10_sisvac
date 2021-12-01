@@ -154,6 +154,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
             @usuarioCreado.dosis_covid = nil
             @usuarioCreado.save
           end
+
+          if(@usuarioCreado.direccion =="TEST")
+            @usuarioCreado.nroref = 0
+            @usuarioCreado.confirmed_at = Date.today
+            @usuarioCreado.save
+          end
         end
       end
       
