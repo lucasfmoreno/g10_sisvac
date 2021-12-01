@@ -1,11 +1,14 @@
 <h2>Mis Datos</h2>
 
-<p>Nombre:<%=@user.nombre%></p>
-<p>Apellido:<%=@user.apellido%></p>
-<p>DNI:<%=@user.dni%></p>
-<% if !current_user.rol=="Vacunador" %>
-    <p>Numero de Referencia:<%=@user.nroref%></p>
-<%end%>
-<p>Vacunatorio:<%=@user.vacunatorio%></p>
-<p>Edad:<%=@user.edad%></p>
-
+<div class="center-table">
+    <p>Nombre:<%=@user.nombre%></p>
+    <p>Apellido:<%=@user.apellido%></p>
+    <p>DNI:<%=@user.dni%></p>
+    <% if !current_user.rol=="Vacunador" %>
+        <p>Numero de Referencia:<%=@user.nroref%></p>
+    <%end%>
+    <%if current_user.rol!="Administrador"%>
+        <p>Vacunatorio:<%=@user.vacunatorio%></p>
+    <%end%>
+    <p>Edad:<%=@user.edad%></p>
+</div>
