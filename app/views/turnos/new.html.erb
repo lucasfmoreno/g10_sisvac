@@ -5,9 +5,11 @@
 
 <%= form_for(@turno) do |f| %>
 <div class="field">
-    <%= f.label :"Tipo de vacuna" %><br />
+    
     <%@arregloVacunas = ['COVID','FIEBRE AMARILLA','GRIPE']%>
-    <%if (current_user.edad > 60)%>
+    <%cantidadVacunasFiebre = Turno.where(:user_id => current_user.id).where(:tipovacuna => "FIEBRE AMARILLA").where(:estado => "Vacunado").count%>
+    <%if (current_user.edad > 60 || cantidadVacunasFiebre!=0)%>
+        <p><b>No se puede poner FIEBRE AMARILLA, ya tiene puesta alguna o tiene mas de 60 años.</b></p>
         <%@arregloVacunas.delete("FIEBRE AMARILLA")%>
     <%end%>
     <%turnosVacunadosGripe = Turno.where(:user_id => current_user.id).where(:tipovacuna => "GRIPE").where(:estado => "Vacunado")%>
@@ -15,11 +17,27 @@
         <% for turnoVacunado in turnosVacunadosGripe do %>
             <%fechaVacunacion = Date.parse(turnoVacunado.fechaRecibir)%>
             <%fechaHaceUnAnio = Date.today - 1.year%>
-            <%if (fechaVacunacion<fechaHaceUnAnio)%>
+            <%if (fechaVacunacion>fechaHaceUnAnio)%>
+                <p><b>No se puede poner GRIPE, se vacuno hace menos de 1 año.</b></p>
                 <%@arregloVacunas.delete("GRIPE")%>
             <%end%>
         <%end%>
     <%end%>
+    <%dosisDeCovid = Turno.where(:user_id => current_user.id).where(:tipovacuna => "COVID").where(:estado => "Vacunado").count%>
+    <%if (turnosVacunadosGripe.count == 3)%>
+        <p><b>No se puede poner COVID, ya tiene esquema completo (3 dosis).</b></p>
+        <%@arregloVacunas.delete("COVID")%>
+    <%end%>
+
+    <!-- Elimino del listado cualquier vacuna que tenga al menos un turno en estado != a vacunado -->
+    <%turnosTotales = Turno.where(:user_id => current_user.id)%>
+    <% for turnoActual in turnosTotales do %>
+        <%if (turnoActual.estado != "Vacunado")%>
+            <p><b>No se puede poner <%=turnoActual.tipovacuna%>, ya tiene un turno pedido/aceptado.</b></p>
+            <%@arregloVacunas.delete(turnoActual.tipovacuna)%>
+        <%end%>
+    <%end%>
+    <%= f.label :"Tipo de vacuna" %><br />
     <%= f.select :tipovacuna, @arregloVacunas%>
 </div>
 <div class="field">
