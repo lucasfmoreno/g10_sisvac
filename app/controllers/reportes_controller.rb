@@ -5,7 +5,7 @@ class ReportesController < ApplicationController
     @turno=Turno.where(:fechaRecibir=>params[:fechaRecibir])
     @turnoH=Turno.where(:remember_created_at=>params[:fechaRecibir])
     @covid=@turno.where(:tipovacuna=>"COVID")
-    @fa=@turno.where(:tipovacuna=>"Fiebre Amarilla")
-    @gr=@turno.where(:tipovacuna=>"Gripe")
+    @fa=@turno.where(:tipovacuna=>"FIEBRE AMARILLA")
+    @gr=@turno.where(:tipovacuna=>"GRIPE")
   end
 end
