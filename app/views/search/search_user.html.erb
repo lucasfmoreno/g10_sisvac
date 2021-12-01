@@ -23,8 +23,11 @@
     <br>
     <br>
     <br><br>
+
     <%if @turno[0].nil?%>
-        <p>El paciente no tiene ningun turno en estado Aceptado!</p>
+        <%if (current_user.rol=="Vacunador")%>
+            <p>El paciente no tiene ningun turno en estado Aceptado!</p>
+        <%end%>
     <%else%>
     <%if current_user.rol!="Administrador"%>
         <table style="text-align:center;float:left;padding-left: 50px;">
