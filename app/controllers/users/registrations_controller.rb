@@ -45,12 +45,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
             if(@usuarioCreado.dni != @dniDelUltimo)
               puts "EL CAMPO ES #{@campoVacunadoSin}, LA OBS ES #{@campoObsVac} y el DNI es #{@usuarioCreado.dni} == #{@usuarioLlego.require(:dni)}"
               if(@usuarioCreado.email == @usuarioLlego.require(:email) && @campoVacunadoSin == "VACUNADOSINTURNO")
-              @turnoNuevo = Turno.new(:user_id => @usuarioCreado.id, :tipovacuna => "FIEBRE AMARILLA", :remember_created_at=>Date.today, :estado=>"Vacunado", :fechaRecibir =>Date.today,
-                :lugar => @user.vacunatorio, :observacion => @campoObsVac)
-              @turnoNuevo.save
-              @vacunaNueva = VacunaDada.new(:user_id => @usuarioCreado.id, :turno_id => @turnoNuevo.id, :tipo_vacuna=>@turnoNuevo.tipovacuna, :fecha_solicitud=>@turnoNuevo.remember_created_at,
-                :fecha_dada=>@turnoNuevo.remember_created_at, :observacion => @campoObsVac)
-              @vacunaNueva.save
+                @turnoNuevo = Turno.new(:user_id => @usuarioCreado.id, :tipovacuna => "FIEBRE AMARILLA", :remember_created_at=>Date.today, :estado=>"Vacunado", :fechaRecibir =>Date.today,
+                  :lugar => @user.vacunatorio, :observacion => @campoObsVac)
+                @turnoNuevo.save
+                @vacunaNueva = VacunaDada.new(:user_id => @usuarioCreado.id, :turno_id => @turnoNuevo.id, :tipo_vacuna=>@turnoNuevo.tipovacuna, :fecha_solicitud=>@turnoNuevo.remember_created_at,
+                  :fecha_dada=>@turnoNuevo.remember_created_at, :observacion => @campoObsVac)
+                @vacunaNueva.save
+                if(@usuarioCreado.direccion =="TEST")
+                  @usuarioCreado.nroref = 0
+                  @usuarioCreado.confirmed_at = Date.today
+                  @usuarioCreado.save
+                end
               end
             end
           end
@@ -77,8 +82,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
           @user=User.new(params.require(:user).permit(:nombre,:email,:password,:dni,:edad,:apellido,:direccion,:vacunatorio))
           render "vacunadores/new"
         end
+      elsif (User.where(:dni => @usuarioLlego.require(:dni)).count!=0)
+        flash[:error] = "DNI ya utilizado."
+        @user=User.new(params.require(:user).permit(:nombre,:email,:password,:dni,:edad,:apellido,:direccion,:vacunatorio))
+        render "vacunadores/new"
       else
-        flash[:error] = "DNI o email ya utilizados."
+        flash[:error] = "MAIL ya utilizado."
         @user=User.new(params.require(:user).permit(:nombre,:email,:password,:dni,:edad,:apellido,:direccion,:vacunatorio))
         render "vacunadores/new"
       end
@@ -115,8 +124,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
             turno = Turno.new(:user_id => @usuarioCreado.id, :tipovacuna => "GRIPE", :remember_created_at=>@usuarioCreado.fecha_gripe, :estado=>"Vacunado", :fechaRecibir => @usuarioCreado.fecha_gripe,
               :lugar => "VACUNADO ANTES DE REGISTRARSE", :observacion => "")
             turno.save
-            vacunaDada = VacunaDada.new(:user_id => @usuarioCreado.id, :turno_id => turno.id, :tipo_vacuna=>turno.tipovacuna, :fecha_solicitud=>turno.remember_created_at,
-              :fecha_dada=>turno.remember_created_at, :observacion => "")
+            vacunaDada = VacunaDada.new(:user_id => @usuarioCreado.id, :turno_id => turno.id, :tipo_vacuna=>turno.tipovacuna, :fecha_solicitud=>@usuarioCreado.fecha_gripe,
+              :fecha_dada=>@usuarioCreado.fecha_gripe, :observacion => "")
             vacunaDada.save
 
             #Me fijo si paso mas de un año de la vacunacion

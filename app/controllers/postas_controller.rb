@@ -1,7 +1,7 @@
 class PostasController < ApplicationController
   skip_before_action :verify_authenticity_token
   def edit
-    @posta=Posta.all
+    @posta=Posta.where.not(:zona => "VACUNADO ANTES DE REGISTRARSE")
   end
 
   def update

@@ -18,7 +18,9 @@
                                         <td><%= f.tipo_vacuna %></td>
                                         <td><%= f.dosis %></td>
                                         <td><%= f.observacion %></td>
-                                        <td><%= f.fecha_dada  %></td>
+                                        <%miturno = Turno.find(f.turno_id)%>
+                                        <%fecha = miturno.fechaRecibir%>
+                                        <td><%= fecha  %></td>
                                         <td><%= link_to "Ver detalle", turno_path(:id => f.turno_id)%></td> 
                                     </tr>  
                                     <%end%>

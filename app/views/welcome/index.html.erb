@@ -27,12 +27,17 @@
             <table style="text-align:center;float:left;padding-left: 50px;" class="table-vac zoomed">
                 <caption>Tabla de turnos a asignar en MUNICIPALIDAD</b></caption>
                 <tr>
+                    <th>DNI PACIENTE</th>
+                    <th>EDAD PACIENTE</th>
                     <th>Tipo de Vacuna</th>
                     <th>Fecha de solicitud</th>
                     <th>Estado</th>
                 </tr>
                 <% @turnosPendientesEnMunicipalidad.each do |turnoPendiente| %>
+                    <%usuarioDelTurno = User.find(turnoPendiente.user_id)%>        
                     <tr>
+                        <td><%= usuarioDelTurno.dni %></td>
+                        <td><%= usuarioDelTurno.edad %></td>
                         <td><%= turnoPendiente.tipovacuna %></td>
                         <td><%= turnoPendiente.remember_created_at.strftime("%d/%m/%Y") %></td>
                         <td><%= turnoPendiente.estado %></td>
@@ -46,12 +51,17 @@
             <table style="text-align:center;float:left;padding-left: 50px;" class="table-vac zoomed">
                 <caption>Tabla de turnos a asignar en TERMINAL</b></caption>
                 <tr>
+                    <th>DNI PACIENTE</th>
+                    <th>EDAD PACIENTE</th>
                     <th>Tipo de Vacuna</th>
                     <th>Fecha de solicitud</th>
                     <th>Estado</th>
                 </tr>
                 <% @turnosPendientesEnTerminal.each do |turnoPendiente| %>
+                    <%usuarioDelTurno = User.find(turnoPendiente.user_id)%>        
                     <tr>
+                        <td><%= usuarioDelTurno.dni %></td>
+                        <td><%= usuarioDelTurno.edad %></td>
                         <td><%= turnoPendiente.tipovacuna %></td>
                         <td><%= turnoPendiente.remember_created_at.strftime("%d/%m/%Y") %></td>
                         <td><%= turnoPendiente.estado %></td>
@@ -65,12 +75,17 @@
             <table style="text-align:center;float:left;padding-left: 50px;"class="table-vac zoomed"> 
                 <caption>Tabla de turnos a asignar en CEMENTERIO</b></caption>
                 <tr>
+                    <th>DNI PACIENTE</th>
+                    <th>EDAD PACIENTE</th>
                     <th>Tipo de Vacuna</th>
                     <th>Fecha de solicitud</th>
                     <th>Estado</th>
                 </tr>
                 <% @turnosPendientesEnCementerio.each do |turnoPendiente| %>
+                    <%usuarioDelTurno = User.find(turnoPendiente.user_id)%>        
                     <tr>
+                        <td><%= usuarioDelTurno.dni %></td>
+                        <td><%= usuarioDelTurno.edad %></td>
                         <td><%= turnoPendiente.tipovacuna %></td>
                         <td><%= turnoPendiente.remember_created_at.strftime("%d/%m/%Y") %></td>
                         <td><%= turnoPendiente.estado %></td>
@@ -114,9 +129,11 @@
                 <% indice = 0 %>
                     <% for tipovac in arreglo do %> 
                         <div id="tabla_turnos <%=arreglo[indice]%>"" style="">
-                            <table style="text-align:center;float:left;padding-left: 50px;">
+                            <table style="text-align:center;float:left;padding-left: 50px;" class="table-vac zoomed">
                                     <caption>Tabla <b><%=arreglo[indice]%></b></caption>
                                     <tr>
+                                        <th>DNI</th>
+                                        <th>EDAD</th>
                                         <th>Tipo de Vacuna</th>
                                         <th>Fecha de solicitud</th>
                                         <th>Estado</th>
@@ -124,7 +141,10 @@
                                 <% @turnosAListar = arreglo2[indice] %>
                                 <% indice += 1 %>
                                 <% @turnosAListar.each do |turno| %>
+                                    <%usuarioDelTurno = User.find(turno.user_id)%>
                                     <tr>
+                                        <td><%= usuarioDelTurno.dni %></td>
+                                        <td><%= usuarioDelTurno.edad %></td>
                                         <td><%= turno.tipovacuna %></td>
                                         <td><%= turno.remember_created_at.strftime("%d/%m/%Y") %></td>
                                         <td><%= turno.estado %></td>
@@ -145,15 +165,20 @@
             <% else %>
                 <p> Turnos atendidos en el dia = <b><%=(@turnosAtendidosDia.count)%></b></p>
                     <div id="tabla_turnos_atendidos" style="align: center;">
-                        <table style="text-align:center;">
+                        <table style="text-align:center;" class="table-vac zoomed">
                                 <caption>Tabla <b>ATENDIDOS</b></caption>
                                 <tr>
+                                    <th>DNI</th>
+                                    <th>EDAD</th>
                                     <th>Tipo de Vacuna</th>
                                     <th>Fecha de solicitud</th>
                                     <th>Estado</th>
                                 </tr>
                             <% @turnosAtendidosDia.each do |turno| %>
+                            <%usuarioDelTurno = User.find(turno.user_id)%>
                                 <tr>
+                                    <td><%= usuarioDelTurno.dni %></td>
+                                    <td><%= usuarioDelTurno.edad %></td>
                                     <td><%= turno.tipovacuna %></td>
                                     <td><%= turno.remember_created_at.strftime("%d/%m/%Y") %></td>
                                     <td><%= turno.estado %></td>
