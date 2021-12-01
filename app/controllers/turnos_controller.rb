@@ -38,7 +38,7 @@ class TurnosController < ApplicationController
     turnoAAsignar = Turno.find(params[:id])
     if(params[:commit]=="Asignar Turno")
       fechaLlego = params[:fecha_asignada]
-      if(Date.parse(fechaLlego)>Date.today)
+      if(Date.parse(fechaLlego)>=Date.today)
         turnoAAsignar.fechaRecibir = fechaLlego
         turnoAAsignar.estado = "Aceptado"
         turnoAAsignar.save
