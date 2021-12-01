@@ -9,9 +9,18 @@
     padding-left:15px;
     border:black 1px solid;
     margin: 1rem;
+    border-radius: 3px;
 }
 
 .table-vac caption{
     border:black 1px solid;
 
+}
+.table-vac a{
+    color: blue;
+}
+
+th{
+    padding-left: 1rem;
+    padding-right: 1rem;
 }

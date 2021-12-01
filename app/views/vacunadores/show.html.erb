@@ -1,12 +1,15 @@
 
+
 <% arreglo = ["Municipalidad", "Terminal", "Cementerio"] %>
 <% arreglo2 = [@usermuni, @usertermi, @usercem] %>
 <% indice = 0 %>
+<div class="gridear inside_table">
     <% for tipovac in arreglo do %> 
         <div >
-            <table class="table-vac">
+            <table class="table-vac zoomed">
                 <caption><b><%=arreglo[indice]%></b></caption>
                 <tr>
+                    <th>DNI</th>
                     <th>Nombre</th>
                     <th>Apellido</th>   
                 </tr>
@@ -14,13 +17,14 @@
                 <% indice += 1 %>
                 <% @vacunador.each do |v| %>
                     <tr>
+                        <td><%= v.dni %></td>
                         <td><%= v.nombre %></td>
                         <td><%= v.apellido %></td>
-                        <td> <%= link_to "Ver detalle", cambios_edit_path(:id => v.id) %></td>
-                        <td> <%= link_to "Eliminar usuario", eliminar_vacunadores_delete_path(:id => v.id) %></td>                                   
+                        <td > <%= link_to "Ver detalle", cambios_edit_path(:id => v.id) %></td>
+                        <td class="espacio"> <%= link_to "Eliminar usuario", eliminar_vacunadores_delete_path(:id => v.id) %></td>                                   
                     </tr>
                 <% end %>
             </table>
         </div>
     <%end%>
-                    
+</div>      
